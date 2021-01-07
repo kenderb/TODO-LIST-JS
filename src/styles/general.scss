@@ -1,0 +1,12 @@
+@import 'colors';
+body {
+  background-color: $secondary-color;
+  color: white;
+}
+.hamburger {
+  margin: 0.7rem;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  color: $white-gray;
+}
