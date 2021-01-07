@@ -1,0 +1,35 @@
+@import '../../styles/colors';
+.projects-title {
+  margin: 1rem;
+  font-size: 0.7rem;
+}
+
+.project {
+  border-radius: 1.2rem;
+  line-height: 1.5rem;
+  padding: 1rem;
+  min-width: 10rem;
+  margin: 1rem 0.05rem 1rem 0.5rem;
+  
+  -webkit-box-shadow: -3px 19px 10px -12px rgba(8,23,94,0.29);
+-moz-box-shadow: -3px 19px 10px -12px rgba(8,23,94,0.29);
+box-shadow: -3px 19px 10px -12px rgba(8,23,94,0.29);
+  
+  background-color:$primary-color;
+}
+
+.project-color-default {
+  margin-top: 1rem;
+  width: 100%;
+  height: 0.2rem;
+  border-radius: 1rem;
+  background-color: $project-one-color;
+}
+
+.project-number {
+  font-size: 0.6rem;
+}
+
+.projects {
+  overflow-y: scroll;
+}

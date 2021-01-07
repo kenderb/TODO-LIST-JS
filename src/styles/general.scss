@@ -1,5 +1,6 @@
 @import 'colors';
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 body {
   background-color: $secondary-color;
   color: white;
@@ -10,6 +11,9 @@ body {
   font-size: 1.5rem;
   background-color: transparent;
   border: none;
+  color: $white-gray;
+}
+.gray-color {
   color: $white-gray;
 }
 .d-flex {
@@ -27,7 +31,7 @@ body {
 }
 .main-container {
   h1 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin: 1rem;
   }
 }
