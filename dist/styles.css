@@ -1,0 +1,79 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);
+* {
+  margin: 0;
+  padding: 0; }
+
+:root {
+  box-sizing: border-box; }
+
+*,
+::before,
+::after {
+  box-sizing: inherit; }
+
+img {
+  width: 100%; }
+
+body {
+  background-color: #3450A1;
+  color: white;
+  font-family: 'Roboto', sans-serif; }
+
+.nav-icon {
+  margin: 0.7rem;
+  font-size: 1.2rem;
+  background-color: transparent;
+  border: none;
+  color: #d1d1d1da; }
+
+.gray-color {
+  color: #d1d1d1da; }
+
+.d-flex {
+  list-style: none;
+  display: flex;
+  flex-direction: row; }
+
+.ml-auto {
+  margin-left: auto; }
+
+.mt-1 {
+  margin-top: 1rem; }
+
+.main-container h1 {
+  font-size: 1.4rem;
+  margin: 1rem; }
+
+.component-container {
+  background-color: red; }
+
+.projects-title {
+  margin: 1rem;
+  font-size: 0.7rem; }
+
+.project {
+  border-radius: 1.2rem;
+  line-height: 1.5rem;
+  padding: 1rem;
+  min-width: 11rem;
+  margin: 1rem 0.05rem 1rem 0.5rem;
+  -webkit-box-shadow: -3px 24px 15px -13px rgba(8, 23, 94, 0.44);
+  -moz-box-shadow: -3px 24px 15px -13px rgba(8, 23, 94, 0.44);
+  box-shadow: -3px 24px 15px -13px rgba(8, 23, 94, 0.44);
+  background-color: #041955; }
+
+.project-color-default {
+  margin-top: 1rem;
+  width: 100%;
+  height: 0.2rem;
+  border-radius: 1rem;
+  background-color: #d01de0;
+  box-shadow: 0 0 1px 0.5px #3450A1, 0 0 2px 1px #d01de0, 0 0 8px 1px #d01de0; }
+
+.project-number {
+  font-size: 0.6rem; }
+
+.projects {
+  padding-bottom: 1rem;
+  overflow-y: scroll; }
+
