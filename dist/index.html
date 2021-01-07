@@ -9,11 +9,30 @@
 <body>
   <header>
     <nav>
-      <ul>
-        <li> <button type="button" class="hamburger"> <ion-icon name="grid-outline"></ion-icon> </button> </li>
+      <ul class="d-flex mt-1">
+        <li> 
+          <button type="button" class="nav-icon">
+            <ion-icon name="grid-outline"></ion-icon> 
+          </button>
+        </li>
+        <li class="ml-auto"> 
+          <button type="button" class="nav-icon">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </li>
+        <li> 
+          <button type="button" class="nav-icon">
+            <ion-icon name="notifications-outline"></ion-icon>
+          </button>
+        </li>
       </ul>
     </nav>
   </header>
+  <main class="main-container">
+    <h1>
+      Welcome, <span id="user-name">Kender</span>!
+    </h1>
+  </main>
   <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
   <script src="main.js"></script>
 </body>
