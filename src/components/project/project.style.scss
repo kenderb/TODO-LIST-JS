@@ -25,9 +25,9 @@
   border-radius: 1rem;
   background-color: $project-one-color;
   box-shadow:
-    0 0 1px 0.5px $secondary-color,  /* inner white */
-    0 0 2px 1px $project-one-color, /* middle magenta */
-    0 0 8px 1px $project-one-color; /* outer cyan */
+    0 0 1px 0.5px $secondary-color, 
+    0 0 2px 1px $project-one-color,
+    0 0 8px 1px $project-one-color;
 }
 
 .project-number {
