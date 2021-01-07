@@ -37,5 +37,10 @@
 
 .projects {
   padding-bottom: 1rem;
-  overflow-y: scroll;
+  scrollbar-width: none;
+  overflow-y: hidden;
+  -ms-overflow-style: none; 
+}
+.projects::-webkit-scrollbar {
+  display: none;
 }
