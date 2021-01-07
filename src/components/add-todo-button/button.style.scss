@@ -1,2 +1,17 @@
 @import '../../styles/colors';
 
+.add-todo-btn {
+  padding: 0.5rem 0.5rem 0.2rem;
+  font-size: 1.5rem;
+  margin: 1.5rem;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  color: white;
+  background-color: $project-one-color;
+  box-shadow:
+    0 0 8px 1px $project-one-color;
+  outline: none;
+  border: none;
+  border-radius: 2rem;
+}
