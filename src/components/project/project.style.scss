@@ -8,12 +8,12 @@
   border-radius: 1.2rem;
   line-height: 1.5rem;
   padding: 1rem;
-  min-width: 10rem;
+  min-width: 11rem;
   margin: 1rem 0.05rem 1rem 0.5rem;
   
-  -webkit-box-shadow: -3px 19px 10px -12px rgba(8,23,94,0.29);
--moz-box-shadow: -3px 19px 10px -12px rgba(8,23,94,0.29);
-box-shadow: -3px 19px 10px -12px rgba(8,23,94,0.29);
+  -webkit-box-shadow: -3px 24px 15px -13px rgba(8,23,94,0.44);
+  -moz-box-shadow: -3px 24px 15px -13px rgba(8,23,94,0.44);
+  box-shadow: -3px 24px 15px -13px rgba(8,23,94,0.44);
   
   background-color:$primary-color;
 }
@@ -31,5 +31,6 @@ box-shadow: -3px 19px 10px -12px rgba(8,23,94,0.29);
 }
 
 .projects {
+  padding-bottom: 1rem;
   overflow-y: scroll;
 }
