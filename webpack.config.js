@@ -19,7 +19,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|svg)$/,
         use: [
           'file-loader', 'image-webpack-loader',
         ],

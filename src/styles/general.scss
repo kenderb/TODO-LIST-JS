@@ -43,6 +43,10 @@ body {
   background-color: $primary-color;
   max-width: 12rem;
   height: 100vh;
+  h2 {
+    margin: 1rem 0 1rem 0;
+    line-height: 2rem;
+  }
 }
 
 .aside-container {
@@ -68,4 +72,32 @@ body {
   justify-content: center;
   align-items: center;
   margin-left: auto;
+}
+
+.projects-button {
+  background-color: transparent;
+  color: $white-gray;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-right: 2rem;
+}
+
+.photo-container {
+  margin: 2rem;
+  padding: 0.2rem;
+  border: $project-one-color solid 2px;
+  border-radius: 6rem;
+}
+
+.photo-bg {
+  background-color: $white-gray;
+  border-radius: 5rem;
+  padding: 0.5rem;
+}
+
+.aside-menu {
+  margin-top: 2rem;
 }
