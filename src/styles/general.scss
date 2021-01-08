@@ -50,7 +50,7 @@ body {
 }
 
 .aside-container {
-  display: block;
+  display: none;
   top: 0;
   position: fixed;
   z-index: 1;
@@ -91,7 +91,6 @@ body {
   border: $project-one-color solid 2px;
   border-radius: 6rem;
 }
-
 .photo-bg {
   background-color: $white-gray;
   border-radius: 5rem;
