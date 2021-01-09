@@ -1,10 +1,10 @@
 import './aside.style.scss';
 import logo from '../../images/logo_02.svg';
 export default class Aside {
-  constructor(name) {
+  constructor(name, aisdeContainer) {
     this.name = name;
     this.photo = logo;
-    this.asideContainer = document.getElementById('aside-container');
+    this.asideContainer = aisdeContainer;
   }
 
   putLogo(image){
