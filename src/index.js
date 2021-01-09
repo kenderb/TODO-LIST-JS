@@ -6,13 +6,13 @@ import Button from './components/add-todo-button/button.component';
 import Aside from './components/aside/aside.component';
 
 
-
 var categoriesArray = [];
-const image = document.getElementById('photo');
+
+const photoImage = document.getElementById('photo');
 
 const aside = new Aside('kender');
-aside.putLogo(image);
-aside.sayHello();
+aside.putLogo(photoImage);
+aside.activateClose();
 
 console.log('Hello Todo app this is fun');
 const todo = new Todo('kender');
