@@ -23,7 +23,8 @@
   margin: 0.5rem auto;
 
   input,
-  select {
+  select,
+  textarea {
     background-color: $white-gray;
     border: $project-three-color solid 0.5px;
     padding: 0.6rem;
