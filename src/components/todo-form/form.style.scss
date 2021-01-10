@@ -7,3 +7,11 @@
   position: absolute;
   background-color: rgba(255, 0, 0, 0.233);
 }
+
+#todo-form {
+  padding: 1.3rem;
+  border-radius: 1rem;
+  margin: 10rem auto;
+  background-color: $project-two-color;
+  max-width: 15rem;
+}
