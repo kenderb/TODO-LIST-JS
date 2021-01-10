@@ -9,9 +9,49 @@
 }
 
 #todo-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 25rem;
   padding: 1.3rem;
   border-radius: 1rem;
-  margin: 10rem auto;
-  background-color: $secondary-color;
-  max-width: 15rem;
+  margin: 2rem auto;
+  background-color: $primary-color;
+}
+
+.form-segment {
+  margin: 1rem auto 1rem auto;
+
+  input,
+  select {
+    background-color: transparent;
+    color: white;
+    border: $project-three-color solid 0.5px;
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+  }
+  
+  input[type="date"] {
+    width: 11.5rem;
+  }
+  
+  label {
+    color:white;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    display: block;
+  }
+
+  button {
+    background-color: $project-three-color;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    min-width: 6rem;
+  }
+  #cancel-button {
+    background-color: transparent;
+    border-color: $white-gray;
+  }
+  
 }
