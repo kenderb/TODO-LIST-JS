@@ -123,6 +123,14 @@
   </main>
    <div class="todo-form-container">
     <form action="/" id="todo-form">
+      
+      <div>
+        <label for="project">Project</label>
+        <select id="project-list" name="project">
+          <option value="default">default</option>
+        </select>
+      </div>
+      
       <div>
         <label for="title">title</label>
         <input type="text" name="title">
@@ -136,6 +144,11 @@
       <div>
         <label for="date">Date</label>
         <input type="date" name="date">
+      </div>
+      
+      <div>
+        <label for="priority">Priority</label>
+        <input type="number" name="priority">
       </div>
       
       <button type="submit" id="create-button">Create</button>
