@@ -11,29 +11,29 @@
 #todo-form {
   display: flex;
   flex-direction: column;
-  max-width: 25rem;
-  padding: 1.3rem;
+  max-width: 20rem;
+  padding: 1.3rem 0.5rem 1.3rem 0.2rem;
   border-radius: 1rem;
   margin: 2rem auto;
   background-color: $primary-color;
 }
 
 .form-segment {
-  margin: 1rem auto 1rem auto;
+  
+  margin: 0.5rem auto;
 
   input,
   select {
-    background-color: transparent;
-    color: white;
+    background-color: $white-gray;
     border: $project-three-color solid 0.5px;
-    padding: 0.4rem;
+    padding: 0.6rem;
     border-radius: 0.3rem;
   }
-  
+
   input[type="date"] {
     width: 11.5rem;
   }
-  
+
   label {
     color:white;
     margin-bottom: 0.5rem;
@@ -45,13 +45,16 @@
     background-color: $project-three-color;
     color: white;
     border: none;
-    padding: 0.5rem;
-    border-radius: 1rem;
+    padding: 0.7rem;
+    border-radius: 2rem;
     min-width: 6rem;
+    margin: 0.2rem;
   }
+
   #cancel-button {
     background-color: transparent;
-    border-color: $white-gray;
+    border: solid $white-gray 1px;
+    border-radius: 2rem;
   }
-  
+
 }
