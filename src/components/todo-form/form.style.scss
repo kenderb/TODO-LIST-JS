@@ -25,7 +25,8 @@
   input,
   select,
   textarea {
-    background-color: $white-gray;
+    background-color: transparent;
+    color: white;
     border: $project-three-color solid 0.5px;
     padding: 0.6rem;
     border-radius: 0.3rem;
