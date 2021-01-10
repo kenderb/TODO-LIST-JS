@@ -5,6 +5,7 @@ import Project from './components/project/project.component';
 import Button from './components/add-todo-button/button.component';
 import Aside from './components/aside/aside.component';
 import Nav from './components/nav-bar/nav.component';
+import Form from './components/todo-form/form.component';
 
 
 var categoriesArray = [];
@@ -12,6 +13,10 @@ var categoriesArray = [];
 const photoImage = document.getElementById('photo');
 const menuBtn = document.getElementById('menu-li');
 const aisdeContainer = document.getElementById('aside-container');
+
+
+const form = new Form('kender');
+form.sayHello();
 
 const aside = new Aside('kender', aisdeContainer);
 aside.putLogo(photoImage);
