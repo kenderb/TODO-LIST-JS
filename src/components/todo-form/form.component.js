@@ -49,15 +49,22 @@ export default class Form {
     return false;
   }
 
+  static validateProjectUniquenes(title, errorContainer) {
+    const projectListselect = document.getElementById('project-list');
+    if (projectListselect.querySelector(`#${title}`)) {
+      errorContainer.innerHTML = `The project ${title} already exists.`;
+      return false;
+    }
+    return true;
+  }
+
   static getProjectTitleAndColor(projectForm){
+    const errorContainer = document.getElementById('errors');
+    errorContainer.innerHTML = '';
     const title = projectForm.elements.projectTitle.value;
     if (Form.validateProjectForm(title)) return false;
     const color = projectForm.elements.color.value;
-    const projectListselect = document.getElementById('project-list');
-    if (projectListselect.querySelector(`#${title}`)) {
-      console.log('The porject alredy exist' + title);
-      return false
-    }
+    if (!Form.validateProjectUniquenes(title, errorContainer))  return false;
     console.log('Add new project to the form named: ' + title);
     const project =  new Project(title, color);
     return project;
