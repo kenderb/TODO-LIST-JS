@@ -7,14 +7,14 @@ export default class Form {
     this.form = this.container.children[0]
     this.btn = btn;
   }
-  
+
   static renderErrorValidation(){
     const errorContainer = document.getElementById('errors');
     errorContainer.innerHTML = '';
     errorContainer.innerHTML = 'To create a new to-do requires all filed';
     return false;
   }
-  
+
   static formValidation(data){
     if (!data.title || !data.date || !data.description) {
       return Form.renderErrorValidation();
@@ -22,7 +22,7 @@ export default class Form {
     console.log(data);
     return true;
   }
-  
+
   static saveData(form){
     const project = form.elements.project.value;
     const title = form.elements.title.value;
@@ -53,26 +53,30 @@ export default class Form {
     const title = projectForm.elements.projectTitle.value;
     if (Form.validateProjectForm(title)) return false;
     const color = projectForm.elements.color.value;
-    const project =  new Project( title, color)
+    const projectListselect = document.getElementById('project-list');
+    if (projectListselect.querySelector(`#${title}`)) {
+      console.log('The porject alredy exist' + title);
+      return false
+    }
+    console.log('Add new project to the form named: ' + title);
+    const project =  new Project(title, color);
     return project;
   }
 
   static getProjectFormInfo() {
     const projectForm = document.getElementById('project-form');
-    console.dir(projectForm);
     projectForm.addEventListener('click', (e) => {
       if (e.target.id === 'btn-create-project') {
-        console.log(Form.getProjectTitleAndColor(projectForm));
-        return Form.getProjectTitleAndColor(projectForm);
+        const project = Form.getProjectTitleAndColor(projectForm);
+        return project;
       }
     });
   }
 
   getFromData() {
-    Form.getProjectFormInfo();
+    const project = Form.getProjectFormInfo();
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
-      console.log(e);
       Form.saveData(this.form);
     });
   }
