@@ -53,7 +53,7 @@ export default class Form {
     const projectForm = document.getElementById('project-form');
     console.dir(projectForm);
     projectForm.addEventListener('click', (e) => {
-      e.preventDefault();
+      
       if (e.target.id === 'btn-create-project') {
         const title = projectForm.elements.projectTitle.value;
         if (Form.validateProjectForm(title)) {

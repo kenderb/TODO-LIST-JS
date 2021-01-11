@@ -86,7 +86,7 @@
 
 .project-form-container {
   top: 0;
-  background-color: rgba(0, 0, 0, 0.089);
+  background-color: #00000017;
   overflow: hidden;
   position: absolute;
   width: 100%;
@@ -101,6 +101,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
     .project-input-container {
       margin: 0.5rem;
     }
