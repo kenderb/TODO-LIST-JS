@@ -127,12 +127,28 @@
       <div class="errors" id="errors">
         
       </div>
+      <div class="project-form-container">
+        <div class="project-form">
+          <h4>Create a project</h4>
+          <div class="project-input-container">
+            <input type="text" placeholder="project title" required>
+          </div>
+          <div class="project-input-container">
+            <label for="color">Pick a color</label>
+            <input type="color" name="color">
+          </div>
+          <div>
+            <button type="button">Create Project</button>
+            <button type="button" id="cancel-button">Cancel</button>
+          </div>
+        </div>
+      </div>
       <div class="form-segment project-segment">
         <label for="project">Select or create a project</label>
         <select id="project-list" name="project">
           <option value="default">default</option>
         </select>
-        <button type="submit" id="create-project">New project</button>
+        <button type="button" id="create-project">New project</button>
       </div>
       
       <div class="form-segment">

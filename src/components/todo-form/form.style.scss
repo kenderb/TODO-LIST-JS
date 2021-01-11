@@ -61,14 +61,15 @@
       transform: scale(1.1);
     }
   }
-
-  #cancel-button {
-    background-color: transparent;
-    border: solid $white-gray 1px;
-    border-radius: 2rem;
-  }
-
+    
 }
+
+#cancel-button {
+  background-color: transparent;
+  border: solid $white-gray 1px;
+  border-radius: 2rem;
+}
+
 
 .errors {
   text-align: center;
@@ -85,4 +86,59 @@
   border: $white-gray 0.5px solid;
   padding: 1rem;
   border-radius: 1rem;
+}
+
+.project-form-container {
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.089);
+  overflow: hidden;
+  position: absolute;
+  width: 20rem;
+  height: 100%;
+  .project-form {
+    margin-top: 9rem;
+    padding: 1rem;
+    background-color: $secondary-color;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .project-input-container {
+      margin: 0.5rem;
+    }
+    button {
+      background-color: $project-one-color;
+      color: white;
+      border: none;
+      padding: 0.7rem;
+      border-radius: 2rem;
+      min-width: 6rem;
+      margin: 0.2rem;
+      outline: none;
+      
+      &:hover {
+        background-color:darken($project-one-color, 10%) ;
+      }
+    
+      &:active {
+        transform: scale(1.1);
+      }
+    }
+    input[type="text"]  {
+      background-color: white;
+      border: $project-one-color solid 0.5px;
+      padding: 0.6rem;
+      border-radius: 0.6rem;
+      ::placeholder {
+        color: white;
+      }
+      :-ms-input-placeholder {
+        color: white;
+      }
+      ::-ms-input-placeholder {
+        color: white;
+      }
+    }
+  }
 }
