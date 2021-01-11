@@ -51,6 +51,15 @@
     border-radius: 2rem;
     min-width: 6rem;
     margin: 0.2rem;
+    outline: none;
+    
+    &:hover {
+      background-color:darken($project-three-color, 10%) ;
+    }
+  
+    &:active {
+      transform: scale(1.1);
+    }
   }
 
   #cancel-button {
