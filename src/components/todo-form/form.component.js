@@ -1,11 +1,11 @@
 import './form.style.scss';
 import Todo from '../todo/todo.component';
+import Project from '../project/project.component';
 export default class Form {
   constructor(container, btn) {
     this.container = container;
     this.form = this.container.children[0]
     this.btn = btn;
-    
   }
   
   static renderErrorValidation(){
@@ -23,8 +23,6 @@ export default class Form {
     return true;
   }
   
- 
-  
   static saveData(form){
     const project = form.elements.project.value;
     const title = form.elements.title.value;
@@ -41,13 +39,38 @@ export default class Form {
     );
     
     Form.formValidation(todo);
-    
-    
+  }
+
+  static validateProjectForm(title){
+    if (!title) {
+      Form.renderErrorValidation();
+      return true;
+    }
+    return false;
+  }
+
+  static getProjectFormInfo() {
+    const projectForm = document.getElementById('project-form');
+    console.dir(projectForm);
+    projectForm.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (e.target.id === 'btn-create-project') {
+        const title = projectForm.elements.projectTitle.value;
+        if (Form.validateProjectForm(title)) {
+          return false;
+        }
+        const color = projectForm.elements.color.value;
+        const project =  new Project( title, color)
+        console.log(project);
+      }
+    });
   }
 
   getFromData() {
+    Form.getProjectFormInfo();
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
+      console.log(e);
       Form.saveData(this.form);
     });
   }
