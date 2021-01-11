@@ -48,6 +48,7 @@ export default class Form {
     }
     return false;
   }
+
   static getProjectTitleAndColor(projectForm){
     const title = projectForm.elements.projectTitle.value;
     if (Form.validateProjectForm(title)) return false;
