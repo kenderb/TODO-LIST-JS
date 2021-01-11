@@ -60,7 +60,7 @@ export default class Form {
     const projectFormContainer = document.getElementById('project-form-container');
     const projectListselect = document.getElementById('project-list');
     const option = document.createElement('option');
-    option.value = project.color;
+    option.value = project.title;
     option.id = project.title;
     option.innerHTML = project.title;
     projectListselect.append(option);
