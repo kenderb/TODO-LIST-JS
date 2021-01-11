@@ -7,7 +7,7 @@ export default class Form {
     this.btn = btn;
   }
 
-  static formData(form){
+  static saveData(form){
     const project = form.elements.project.value;
     const title = form.elements.title.value;
     const date = form.elements.date.value;
@@ -21,7 +21,7 @@ export default class Form {
       description,
       priority
     );
-  
+
     console.log(todo);
     
   }
@@ -29,7 +29,7 @@ export default class Form {
   getFromData() {
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
-      Form.formData(this.form);
+      Form.saveData(this.form);
     });
   }
   
