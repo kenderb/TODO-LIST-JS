@@ -48,6 +48,15 @@ export default class Form {
     }
     return false;
   }
+  static getProjectTitleAndColor(projectForm){
+    const title = projectForm.elements.projectTitle.value;
+    if (Form.validateProjectForm(title)) {
+      return false;
+    }
+    const color = projectForm.elements.color.value;
+    const project =  new Project( title, color)
+    console.log(project);
+  }
 
   static getProjectFormInfo() {
     const projectForm = document.getElementById('project-form');
@@ -55,13 +64,7 @@ export default class Form {
     projectForm.addEventListener('click', (e) => {
       
       if (e.target.id === 'btn-create-project') {
-        const title = projectForm.elements.projectTitle.value;
-        if (Form.validateProjectForm(title)) {
-          return false;
-        }
-        const color = projectForm.elements.color.value;
-        const project =  new Project( title, color)
-        console.log(project);
+        Form.getProjectTitleAndColor(projectForm);
       }
     });
   }
