@@ -1,6 +1,6 @@
 import './styles/reset.scss';
 import './styles/general.scss';
-import Todo from './components/todo/todo.component';
+
 import Project from './components/project/project.component';
 import Button from './components/add-todo-button/button.component';
 import Aside from './components/aside/aside.component';
@@ -26,8 +26,7 @@ aside.activateClose();
 const navBar = new Nav();
 navBar.activateOpenMemu(menuBtn, aisdeContainer)
 
-const todo = new Todo('kender');
-todo.sayHello();
+
 
 const project = new Project('kender');
 project.sayHello();

@@ -1,5 +1,5 @@
 import './form.style.scss';
-
+import Todo from '../todo/todo.component';
 export default class Form {
   constructor(container, btn) {
     this.container = container;
@@ -13,7 +13,17 @@ export default class Form {
     const date = form.elements.date.value;
     const description = form.elements.description.value;
     const priority = form.elements.priority.value;
-    console.log([project, title, date, description, priority]);
+    
+    const todo = new Todo(
+      project,
+      title,
+      date,
+      description,
+      priority
+    );
+  
+    console.log(todo);
+    
   }
 
   getFromData() {
