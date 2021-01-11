@@ -13,10 +13,11 @@ var categoriesArray = [];
 const photoImage = document.getElementById('photo');
 const menuBtn = document.getElementById('menu-li');
 const aisdeContainer = document.getElementById('aside-container');
+const createTodoFormBtn = document.getElementById('add-todo-btn');
+const formContainer = document.getElementById('todo-form-container');
 
-
-const form = new Form('kender');
-form.sayHello();
+const form = new Form(formContainer, createTodoFormBtn);
+form.getFromData();
 
 const aside = new Aside('kender', aisdeContainer);
 aside.putLogo(photoImage);

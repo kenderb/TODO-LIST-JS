@@ -1,12 +1,26 @@
 import './form.style.scss';
 
 export default class Form {
-  constructor(name) {
-    this.name = name;
+  constructor(container, btn) {
+    this.container = container;
+    this.form = this.container.children[0]
+    this.btn = btn;
   }
 
-  sayHello() {
-    console.log(`hello ${this.name} using class Form`);
+  static formData(form){
+    const project = form.elements.project.value;
+    const title = form.elements.title.value;
+    const date = form.elements.date.value;
+    const description = form.elements.description.value;
+    const priority = form.elements.priority.value;
+    console.log([project, title, date, description, priority]);
+  }
+
+  getFromData() {
+    this.form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      Form.formData(this.form);
+    });
   }
   
 }
