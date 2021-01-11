@@ -1,11 +1,14 @@
 import './project.style.scss';
 
 export default class Project {
-  constructor(title, color='default') {
+  constructor(title, color='default', todoArray = []) {
     this.title = title;
     this.color = color;
+    this.todoArray = todoArray
   }
-  sayHello() {
-    console.log(`hello ${this.name} using class Project`);
+
+  addNewTodo(todo) {
+    this.todoArray.push(todo);
+    return this;
   }
 }

@@ -27,9 +27,5 @@ const navBar = new Nav();
 navBar.activateOpenMemu(menuBtn, aisdeContainer)
 
 
-
-const project = new Project('kender');
-project.sayHello();
-
 const button = new Button('kender');
 button.sayHello();
