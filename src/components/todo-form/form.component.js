@@ -5,8 +5,26 @@ export default class Form {
     this.container = container;
     this.form = this.container.children[0]
     this.btn = btn;
+    
   }
-
+  
+  static renderErrorValidation(){
+    const errorContainer = document.getElementById('errors');
+    errorContainer.innerHTML = '';
+    errorContainer.innerHTML = 'To create a new to-do requires all filed';
+    return false;
+  }
+  
+  static formValidation(data){
+    if (!data.title || !data.date || !data.description) {
+      return Form.renderErrorValidation();
+    }
+    console.log(data);
+    return true;
+  }
+  
+ 
+  
   static saveData(form){
     const project = form.elements.project.value;
     const title = form.elements.title.value;
@@ -21,8 +39,9 @@ export default class Form {
       description,
       priority
     );
-
-    console.log(todo);
+    
+    Form.formValidation(todo);
+    
     
   }
 
