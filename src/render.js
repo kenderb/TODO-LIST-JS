@@ -17,8 +17,22 @@ export default class Render {
   
   renderProjects() {
     const projects = Render.getDataforTheLocalStorage('todoApp');
-    for (const project of projects) {
-      console.log(`rendering.... Projects: ${project.name} color: ${project.color} Numbers of Todos ${(project.todos).length}`);
+    const projectContainer = document.getElementById('projects');
+    projectContainer.innerHTML = '';
+    console.log(projectContainer);
+    if (projects) {
+      for (const project of projects) {
+        const projectDiv = document.createElement('div');
+        projectDiv.className = 'project';
+        projectDiv.innerHTML =`
+          <p class="gray-color project-number">
+            <span id="project-number">${(project.todos).length}</span>  Todos
+          </p>
+          <b>${project.name} </b>
+          <div class="project-color-default">
+          </div>`
+        projectContainer.append(projectDiv);
+      }
     }
     
   }
