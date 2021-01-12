@@ -22,8 +22,6 @@ export default class Form {
     return true;
   }
 
- 
-
   static validateProjectForm(title){
     if (!title) {
       Form.renderErrorValidation();
@@ -110,7 +108,7 @@ export default class Form {
       priority
     );
     Form.formValidation(todo);
-    return {name: project, color: color.color, todos: [todo]};
+    return [{name: project, color: color.color, todos: [todo]}];
   }
 
   getFromData() {
