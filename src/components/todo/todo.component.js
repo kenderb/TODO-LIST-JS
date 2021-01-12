@@ -1,8 +1,7 @@
 import './todo.style.scss';
 
 export default class Todo {
-  constructor(color, project, title, date, description, priority) {
-    this.color = color;
+  constructor(project, title, date, description, priority) {
     this.project = project;
     this.title = title;
     this.date = date;

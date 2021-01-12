@@ -71,7 +71,7 @@ export default class Form {
     option.id = project.title;
     option.innerHTML = project.title;
     projectListselect.append(option);
-    Form.saveDataToTheLocalStorage(project.title, {color: project.color});
+    Form.saveDataToTheLocalStorage(`${project.title}Color`, {color: project.color});
     Form.closeForm(projectFormContainer);
     return project;
   }
@@ -94,16 +94,15 @@ export default class Form {
 
   static saveData(form){
     const project = form.elements.project.value
-    const projectStorageData = window.localStorage.getItem(project);
+    const projectStorageData = window.localStorage.getItem(`${project}Color`);
     const title = form.elements.title.value;
     const date = form.elements.date.value;
     const description = form.elements.description.value;
     const priority = form.elements.priority.value;
-    if (projectStorageData === null) Form.saveDataToTheLocalStorage(project, {color: '#d01de0'})
-    const color = Form.getDataforTheLocalStorage(project);
+    if (projectStorageData === null) Form.saveDataToTheLocalStorage(`${project}Color`, {color: '#d01de0'})
+    const color = Form.getDataforTheLocalStorage(`${project}Color`);
     console.log(color);
     const todo = new Todo(
-      color.color,
       project,
       title,
       date,
@@ -111,7 +110,7 @@ export default class Form {
       priority
     );
     Form.formValidation(todo);
-    return todo;
+    return {name: project, color: color.color, todos: [todo]};
   }
 
   getFromData() {
