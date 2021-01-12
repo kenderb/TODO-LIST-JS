@@ -100,7 +100,10 @@ export default class Form {
     const description = form.elements.description.value;
     const priority = form.elements.priority.value;
     if (projectStorageData === null) Form.saveDataToTheLocalStorage(project, {color: '#d01de0'})
+    const color = Form.getDataforTheLocalStorage(project);
+    console.log(color);
     const todo = new Todo(
+      color,
       project,
       title,
       date,
