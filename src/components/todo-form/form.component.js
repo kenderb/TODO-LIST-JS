@@ -113,9 +113,17 @@ export default class Form {
 
   getFromData() {
     Form.getProjectFormInfo();
-    this.form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      console.log(Form.saveData(this.form));
+    this.form.addEventListener("click", (e) => {
+      // e.preventDefault();
+      if (e.target.id === 'create-button') {
+        console.log(Form.saveData(this.form));
+      }
+      
+      if (e.target.id === 'create-project') {
+        const createProjectContainer = document.getElementById('project-form-container');
+        Form.closeForm(createProjectContainer);
+      }
+      console.log(e.target.id);
       
     });
   }
