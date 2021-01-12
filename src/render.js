@@ -43,15 +43,17 @@ export default class Render {
           ${todo.title}
         </p>
         <div class="todo-date ml-auto gray-color" id="date-${deleteTitleSpaces}-${project.name}"> Due date: ${todo.date}</div>
-        <ion-icon name="trash-outline" class="ml-auto delete-todo-icon" id="delete-${deleteTitleSpaces}-${project.name}"></ion-icon>
+        <ion-icon name="trash-outline" class="delete-todo-icon" id="delete-${deleteTitleSpaces}-${project.name}"></ion-icon>
         <div class="priority-color-container priority-color-${todo.priority}"></div>
       </div>
-      <p class="todo-description" id="title-${deleteTitleSpaces}-${project.name}">
+      <p class="todo-description" id="description-${deleteTitleSpaces}-${project.name}">
           ${todo.description}
       </p>
       `;
     todoContainer.append(todoDiv);
     const getCircle = document.getElementById(`${deleteTitleSpaces}-${project.name}`);
+    const editableDescription = document.getElementById(`description-${deleteTitleSpaces}-${project.name}`);
+    editableDescription.contentEditable = true;
     getCircle.style.border = `${project.color} 1px solid`;
   }
 
