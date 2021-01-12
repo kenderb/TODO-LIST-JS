@@ -26,12 +26,8 @@ export default class Render {
     projectContainer.append(projectDiv);
     const colorContainer = document.getElementById(`${project.name}-color`);
     colorContainer.style.backgroundColor = project.color;
-    colorContainer.style.boxShadow = `
-      0 0 1px 0.5px ${project.color},
-      0 0 2px 1px ${project.color},
-      0 0 8px 1px ${project.color};
-    `;
   }
+
   renderProjects() {
     const projects = Render.getDataforTheLocalStorage('todoApp');
     const projectContainer = document.getElementById('projects');
