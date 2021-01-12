@@ -34,9 +34,9 @@ export default class Render {
     const deleteTitleSpaces = (todo.title).replace(/\s/g, '');
     todoDiv.id = `todo-${deleteTitleSpaces}`;
     todoDiv.innerHTML = `
-      <div class=" todo d-flex">
+      <div class=" todo d-flex" id="container-${deleteTitleSpaces}-${project.name}">
         <div class="checkbox-container"id="check-${deleteTitleSpaces}-${project.name}">
-          <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">
+          <input type="checkbox" name="checkbox" id="checkbox" class="checkbox" checked="checked">
           <label for="checkbox" class="checkbox-circle" id="${deleteTitleSpaces}-${project.name}"></label>
         </div>
         <p class="todo-title" id="title-${deleteTitleSpaces}-${project.name}">
@@ -46,10 +46,22 @@ export default class Render {
         <ion-icon name="trash-outline" class="delete-todo-icon" id="delete-${deleteTitleSpaces}-${project.name}"></ion-icon>
         <div class="priority-color-container priority-color-${todo.priority}"></div>
       </div>
-      <p class="todo-description" id="description-${deleteTitleSpaces}-${project.name}">
+      <p class="todo-description d-none" id="description-${deleteTitleSpaces}-${project.name}">
           ${todo.description}
       </p>
       `;
+    todoDiv.addEventListener('click', (e) => {
+      console.log(e.target.id);
+      if (e.target.id === `title-${deleteTitleSpaces}-${project.name}` || 
+          e.target.id === `date-${deleteTitleSpaces}-${project.name}`  ||
+          e.target.id === `container-${deleteTitleSpaces}-${project.name}`) {
+        const descriptionContainer = document.getElementById(`description-${deleteTitleSpaces}-${project.name}`)
+        descriptionContainer.classList.toggle('d-none');
+      }
+    });
+    todoDiv.addEventListener('focusout', (e) => {
+      console.log(e.target);
+    });
     todoContainer.append(todoDiv);
     const getCircle = document.getElementById(`${deleteTitleSpaces}-${project.name}`);
     const editableDescription = document.getElementById(`description-${deleteTitleSpaces}-${project.name}`);
