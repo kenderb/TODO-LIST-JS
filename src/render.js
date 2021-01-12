@@ -28,6 +28,25 @@ export default class Render {
     colorContainer.style.backgroundColor = project.color;
   }
 
+  static renderTodoCard(project, todo, todoContainer){
+    console.log(todo);
+    const todoDiv = document.createElement('div');
+    const deleteTitleSpaces = (todo.title).replace(/\s/g, '');
+    todoDiv.classList.add('todo', 'd-flex') ;
+    todoDiv.id = `todo-${deleteTitleSpaces}`;
+    todoDiv.innerHTML = `
+      <div class="checkbox-container">
+        <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">
+        <label for="checkbox" class="checkbox-circle" id="${deleteTitleSpaces}-${project.name}"></label>
+      </div>
+      <p class="todo-title">
+        ${todo.title}
+      </p>`;
+    todoContainer.append(todoDiv);
+    const getCircle = document.getElementById(`${deleteTitleSpaces}-${project.name}`);
+    getCircle.style.border = `${project.color} 1px solid`;
+  }
+
   renderAllTodos(){
     const data = Render.getDatafromTheLocalStorage('todoApp');
     const todoContainer = document.getElementById('all-todos-container');
@@ -36,22 +55,7 @@ export default class Render {
     if (data) {
       for (const project of data) {
         for (const todo of project.todos) {
-          console.log(todo);
-          const todoDiv = document.createElement('div');
-          const deleteTitleSpaces = (todo.title).replace(/\s/g, '');
-          todoDiv.classList.add('todo', 'd-flex') ;
-          todoDiv.id = `todo-${deleteTitleSpaces}`;
-          todoDiv.innerHTML = `
-            <div class="checkbox-container">
-              <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">
-              <label for="checkbox" class="checkbox-circle" id="${deleteTitleSpaces}-${project.name}"></label>
-            </div>
-            <p class="todo-title">
-              ${todo.title}
-            </p>`;
-          todoContainer.append(todoDiv);
-          const getCircle = document.getElementById(`${deleteTitleSpaces}-${project.name}`);
-          getCircle.style.border = `${project.color} 1px solid`;
+          Render.renderTodoCard(project, todo, todoContainer)
         }
       }
     }
