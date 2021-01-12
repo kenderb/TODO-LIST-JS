@@ -103,7 +103,7 @@ export default class Form {
     const color = Form.getDataforTheLocalStorage(project);
     console.log(color);
     const todo = new Todo(
-      color,
+      color.color,
       project,
       title,
       date,
@@ -118,7 +118,8 @@ export default class Form {
     Form.getProjectFormInfo();
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
-      Form.saveData(this.form);
+      console.log(Form.saveData(this.form));
+      
     });
   }
 
