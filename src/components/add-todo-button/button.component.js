@@ -1,10 +1,15 @@
 import './button.style.scss';
 
 export default class Button {
-  constructor(name) {
-    this.name = name;
+  constructor() {
+    this.openBtn = document.getElementById('add-todo-btn');;
+    this.formContainer = document.getElementById('todo-form-container');
   }
-  sayHello() {
-    console.log(`hello ${this.name} using class Button`);
+
+  activateButton() {
+    const openBtn = document.getElementById('add-todo-btn');
+    this.openBtn.addEventListener('click', () => {
+      this.formContainer.classList.toggle('d-none');
+    });
   }
 }

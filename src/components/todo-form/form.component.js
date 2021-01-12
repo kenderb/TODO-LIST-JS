@@ -49,6 +49,7 @@ export default class Form {
     const project =  new Project(title, color);
     return project;
   }
+
   static closeForm(container) {
     container.classList.toggle('d-none');
   }
@@ -60,6 +61,7 @@ export default class Form {
   static getDataforTheLocalStorage(key) {
     return JSON.parse(window.localStorage.getItem(key));
   }
+
   static addNewProjectToForm(project){
     if (!project) return false;
     const projectFormContainer = document.getElementById('project-form-container');
@@ -106,25 +108,28 @@ export default class Form {
       description,
       priority
     );
-    Form.formValidation(todo);
-    Form.saveDataToTheLocalStorage('todoApp', [{name: project, color: color.color, todos: [todo]}])
-    return Form.getDataforTheLocalStorage('todoApp');
+    if (!Form.formValidation(todo)) return false;
+    Form.saveDataToTheLocalStorage('todoApp', [{name: project, color: color.color, todos: [todo]}]);
+    console.log(Form.getDataforTheLocalStorage('todoApp'));
+    return true;
   }
 
   getFromData() {
     Form.getProjectFormInfo();
     this.form.addEventListener("click", (e) => {
-      // e.preventDefault();
       if (e.target.id === 'create-button') {
-        console.log(Form.saveData(this.form));
+        const createTodoContainer = document.getElementById('todo-form-container');
+        if(Form.saveData(this.form)) Form.closeForm(createTodoContainer);
       }
       
       if (e.target.id === 'create-project') {
         const createProjectContainer = document.getElementById('project-form-container');
         Form.closeForm(createProjectContainer);
       }
-      console.log(e.target.id);
-      
+      if (e.target.id === 'cancel-button') {
+        const createTodoContainer = document.getElementById('todo-form-container');
+        Form.closeForm(createTodoContainer);
+      }
     });
   }
 
