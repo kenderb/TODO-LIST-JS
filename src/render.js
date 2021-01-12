@@ -13,7 +13,7 @@ export default class Render {
     return starage;
   }
   
-  static createAProjectDiv(project, projectContainer) {
+  static renderProjectCard(project, projectContainer) {
     const projectDiv = document.createElement('div');
     projectDiv.className = 'project';
     projectDiv.innerHTML =`
@@ -41,13 +41,15 @@ export default class Render {
       </div>
       <p class="todo-title">
         ${todo.title}
-      </p>`;
+      </p>
+      <div class="priority-color-container priority-color-${todo.priority}"></div>
+      `;
     todoContainer.append(todoDiv);
     const getCircle = document.getElementById(`${deleteTitleSpaces}-${project.name}`);
     getCircle.style.border = `${project.color} 1px solid`;
   }
 
-  renderAllTodos(){
+  renderAllTodos() {
     const data = Render.getDatafromTheLocalStorage('todoApp');
     const todoContainer = document.getElementById('all-todos-container');
     todoContainer.innerHTML = '';
@@ -67,7 +69,7 @@ export default class Render {
     projectContainer.innerHTML = '';
     if (projects) {
       for (const project of projects) {
-        Render.createAProjectDiv(project, projectContainer)
+        Render.renderProjectCard(project, projectContainer)
       }
     }
     

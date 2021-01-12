@@ -10,6 +10,8 @@
 }
 
 .todo {
+  position: relative;
+  overflow: hidden;
   font-size: 0.8rem;
   align-items: center;
   background-color: $primary-color;
@@ -36,4 +38,22 @@
   width: 1.1rem;
   height: 1.1rem;
   border-radius: 1.1rem;
+}
+
+.priority-color-3 {
+  background-color: green;
+}
+
+.priority-color-2 {
+  background-color: orange;
+}
+
+.priority-color-1 {
+  background-color: red;
+}
+.priority-color-container {
+  position: absolute;
+  right: 0;
+  width: 1rem;
+  height: 4rem;
 }
