@@ -136,7 +136,12 @@ export default class Form {
     return true;
   }
 
+  static addOptionsFromStorage() {
+    
+  }
+
   getFromData() {
+    Form.addOptionsFromStorage();
     Form.getProjectFormInfo();
     this.form.addEventListener("click", (e) => {
       if (e.target.id === 'create-button') {
@@ -148,6 +153,7 @@ export default class Form {
         const createProjectContainer = document.getElementById('project-form-container');
         Form.closeForm(createProjectContainer);
       }
+    
       if (e.target.id === 'cancel-button') {
         const createTodoContainer = document.getElementById('todo-form-container');
         Form.closeForm(createTodoContainer);
