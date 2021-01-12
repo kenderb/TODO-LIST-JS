@@ -54,7 +54,14 @@ export default class Form {
   static closeForm(container) {
     container.classList.toggle('d-none');
   }
-  
+
+  static saveDataToTheLocalStorage(key, value) {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  static getDataforTheLocalStorage(key) {
+    return JSON.parse(window.localStorage.getItem(key));
+  }
   static addNewProjectToForm(project){
     if (!project) return false;
     const projectFormContainer = document.getElementById('project-form-container');
@@ -64,6 +71,7 @@ export default class Form {
     option.id = project.title;
     option.innerHTML = project.title;
     projectListselect.append(option);
+    Form.saveDataToTheLocalStorage(project.title, {color: project.color});
     Form.closeForm(projectFormContainer);
     return project;
   }
@@ -83,15 +91,15 @@ export default class Form {
       }
     });
   }
-  
+
   static saveData(form){
     const project = form.elements.project.value
+    const projectStorageData = window.localStorage.getItem(project);
     const title = form.elements.title.value;
     const date = form.elements.date.value;
     const description = form.elements.description.value;
     const priority = form.elements.priority.value;
-    console.dir(form.elements.project);
-    
+    if (projectStorageData === null) Form.saveDataToTheLocalStorage(project, {color: '#d01de0'})
     const todo = new Todo(
       project,
       title,
@@ -99,7 +107,6 @@ export default class Form {
       description,
       priority
     );
-    
     Form.formValidation(todo);
     return todo;
   }
@@ -108,8 +115,8 @@ export default class Form {
     Form.getProjectFormInfo();
     this.form.addEventListener("submit", (e) => {
       e.preventDefault();
-      console.log(Form.saveData(this.form));
+      Form.saveData(this.form);
     });
   }
-  
+
 }
