@@ -59,7 +59,11 @@ export default class Form {
   }
 
   static getDataforTheLocalStorage(key) {
-    return JSON.parse(window.localStorage.getItem(key));
+    const starage = JSON.parse(window.localStorage.getItem(key));
+    if (starage === null ||starage === 'null') {
+      return [];
+    }
+    return starage;
   }
 
   static addNewProjectToForm(project){
@@ -92,16 +96,18 @@ export default class Form {
     });
   }
   static lookExistenceProject(formData) {
-    const starageData = Form.getDataforTheLocalStorage('todoApp');
-    if (starageData != null || starageData != 'null') {
-      starageData.forEach(storageElement => {
+    
+    const storageData = Form.getDataforTheLocalStorage('todoApp');
+    if (storageData) {
+      for (const storageElement of storageData) {
         if (storageElement.name === formData.name) {
           storageElement.todos.push(formData.todos[0]);
-          return starageData;
+          return storageData;
         }
-      });
+      }
     }
-    return false;
+    storageData.push(formData);
+    return storageData;
   }
 
   static saveData(form){
@@ -124,10 +130,8 @@ export default class Form {
   
     const formData = {name: project, color: color.color, todos: [todo]};
     const storageProject = Form.lookExistenceProject(formData);
-
-    if (storageProject != null) {
-      Form.saveDataToTheLocalStorage('todoApp', storageProject);
-    }
+    Form.saveDataToTheLocalStorage('todoApp', storageProject);
+    console.log(Form.getDataforTheLocalStorage('todoApp'));
     
     return true;
   }
