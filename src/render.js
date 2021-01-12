@@ -42,7 +42,7 @@ export default class Render {
       <p class="todo-title">
         ${todo.title}
       </p>
-      <div class="todo-date ml-auto"> Due: ${todo.date}</div>
+      <div class="todo-date ml-auto gray-color"> Due date: ${todo.date}</div>
       <ion-icon name="trash-outline" class="ml-auto delete-todo-icon"></ion-icon>
       <div class="priority-color-container priority-color-${todo.priority}"></div>
       `;
