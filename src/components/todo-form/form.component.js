@@ -137,7 +137,19 @@ export default class Form {
   }
 
   static addOptionsFromStorage() {
-    
+    const projectList = document.getElementById('project-list');
+    const storageProjects = Form.getDataforTheLocalStorage('todoApp');
+    if (storageProjects) {
+      for (const project of storageProjects) {
+        if (project.name != 'default') {
+          const opinionTag = document.createElement('option');
+          opinionTag.value = project.name;
+          opinionTag.id = project.name;
+          opinionTag.innerHTML = project.name;
+          projectList.append(opinionTag);
+        }
+      }
+    }
   }
 
   getFromData() {
