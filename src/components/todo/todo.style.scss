@@ -61,3 +61,16 @@
   font-size: 1.3rem;
   margin-right: 0.7rem;
 }
+
+.todo-title {
+  overflow: hidden;
+  max-width: 7rem;
+}
+.todo-description {
+  text-align: justify;
+  margin: -0.7rem 1rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: rgba(25, 26, 92, 0.281);
+  margin-bottom: 1.2rem;
+}

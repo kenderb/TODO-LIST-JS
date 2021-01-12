@@ -32,19 +32,23 @@ export default class Render {
     console.log(todo);
     const todoDiv = document.createElement('div');
     const deleteTitleSpaces = (todo.title).replace(/\s/g, '');
-    todoDiv.classList.add('todo', 'd-flex') ;
     todoDiv.id = `todo-${deleteTitleSpaces}`;
     todoDiv.innerHTML = `
-      <div class="checkbox-container">
-        <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">
-        <label for="checkbox" class="checkbox-circle" id="${deleteTitleSpaces}-${project.name}"></label>
+      <div class=" todo d-flex">
+        <div class="checkbox-container"id="check-${deleteTitleSpaces}-${project.name}">
+          <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">
+          <label for="checkbox" class="checkbox-circle" id="${deleteTitleSpaces}-${project.name}"></label>
+        </div>
+        <p class="todo-title" id="title-${deleteTitleSpaces}-${project.name}">
+          ${todo.title}
+        </p>
+        <div class="todo-date ml-auto gray-color" id="date-${deleteTitleSpaces}-${project.name}"> Due date: ${todo.date}</div>
+        <ion-icon name="trash-outline" class="ml-auto delete-todo-icon" id="delete-${deleteTitleSpaces}-${project.name}"></ion-icon>
+        <div class="priority-color-container priority-color-${todo.priority}"></div>
       </div>
-      <p class="todo-title">
-        ${todo.title}
+      <p class="todo-description" id="title-${deleteTitleSpaces}-${project.name}">
+          ${todo.description}
       </p>
-      <div class="todo-date ml-auto gray-color"> Due date: ${todo.date}</div>
-      <ion-icon name="trash-outline" class="ml-auto delete-todo-icon"></ion-icon>
-      <div class="priority-color-container priority-color-${todo.priority}"></div>
       `;
     todoContainer.append(todoDiv);
     const getCircle = document.getElementById(`${deleteTitleSpaces}-${project.name}`);
