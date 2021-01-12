@@ -16,6 +16,7 @@ const formContainer = document.getElementById('todo-form-container');
 
 const render = new Render();
 render.renderProjects();
+render.renderAllTodos();
 
 const form = new Form(formContainer, createTodoFormBtn);
 form.getFromData();

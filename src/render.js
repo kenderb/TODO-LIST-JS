@@ -5,7 +5,7 @@ export default class Render {
     window.localStorage.setItem(key, JSON.stringify(value));
   }
 
-  static getDataforTheLocalStorage(key) {
+  static getDatafromTheLocalStorage(key) {
     const starage = JSON.parse(window.localStorage.getItem(key));
     if (starage === null ||starage === 'null') {
       return [];
@@ -28,15 +28,39 @@ export default class Render {
     colorContainer.style.backgroundColor = project.color;
   }
 
+  renderAllTodos(){
+    const data = Render.getDatafromTheLocalStorage('todoApp');
+    const todoContainer = document.getElementById('all-todos-container');
+    todoContainer.innerHTML = '';
+    console.log(todoContainer);
+    if (data) {
+      for (const project of data) {
+        for (const todo of project.todos) {
+          console.log(todo);
+          const todoDiv = document.createElement('div');
+          todoDiv.classList.add('todo', 'd-flex') ;
+          todoDiv.id = `todo-${todo.title}`;
+          todoDiv.innerHTML = `
+          <div class="checkbox-container">
+            <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">
+            <label for="checkbox" class="checkbox-circle"></label>
+          </div>
+          <p class="todo-title">
+            ${todo.title}
+          </p>`;
+          todoContainer.append(todoDiv);
+        }
+      }
+    }
+  }
+
   renderProjects() {
-    const projects = Render.getDataforTheLocalStorage('todoApp');
+    const projects = Render.getDatafromTheLocalStorage('todoApp');
     const projectContainer = document.getElementById('projects');
     projectContainer.innerHTML = '';
-    console.log(projectContainer);
     if (projects) {
       for (const project of projects) {
         Render.createAProjectDiv(project, projectContainer)
-        console.log(project.color);
       }
     }
     
