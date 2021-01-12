@@ -28,6 +28,21 @@ export default class Render {
     colorContainer.style.backgroundColor = project.color;
   }
 
+  static addEventsToTodoCard(todoDiv, deleteTitleSpaces, project) {
+    todoDiv.addEventListener('click', (e) => {
+      console.log(e.target.id);
+      if (e.target.id === `title-${deleteTitleSpaces}-${project.name}` || 
+          e.target.id === `date-${deleteTitleSpaces}-${project.name}`  ||
+          e.target.id === `container-${deleteTitleSpaces}-${project.name}`) {
+        const descriptionContainer = document.getElementById(`description-${deleteTitleSpaces}-${project.name}`)
+        descriptionContainer.classList.toggle('d-none');
+      }
+    });
+    todoDiv.addEventListener('focusout', (e) => {
+      console.log(e.target);
+    });
+  }
+
   static renderTodoCard(project, todo, todoContainer){
     console.log(todo);
     const todoDiv = document.createElement('div');
@@ -50,18 +65,7 @@ export default class Render {
           ${todo.description}
       </p>
       `;
-    todoDiv.addEventListener('click', (e) => {
-      console.log(e.target.id);
-      if (e.target.id === `title-${deleteTitleSpaces}-${project.name}` || 
-          e.target.id === `date-${deleteTitleSpaces}-${project.name}`  ||
-          e.target.id === `container-${deleteTitleSpaces}-${project.name}`) {
-        const descriptionContainer = document.getElementById(`description-${deleteTitleSpaces}-${project.name}`)
-        descriptionContainer.classList.toggle('d-none');
-      }
-    });
-    todoDiv.addEventListener('focusout', (e) => {
-      console.log(e.target);
-    });
+    Render.addEventsToTodoCard(todoDiv, deleteTitleSpaces, project);
     todoContainer.append(todoDiv);
     const getCircle = document.getElementById(`${deleteTitleSpaces}-${project.name}`);
     const editableDescription = document.getElementById(`description-${deleteTitleSpaces}-${project.name}`);
