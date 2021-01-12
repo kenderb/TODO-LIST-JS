@@ -11,7 +11,6 @@ export default class Aside {
     image.src = this.photo;
   }
 
-  
   activateClose() {
     this.asideContainer.addEventListener('click', (e) => {
       if (e.target.id === 'aside-container' || e.target.id === 'arrow') {

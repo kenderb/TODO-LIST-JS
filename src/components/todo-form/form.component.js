@@ -91,6 +91,18 @@ export default class Form {
       }
     });
   }
+  static lookExistenceProject(formData) {
+    const starageData = Form.getDataforTheLocalStorage('todoApp');
+    if (starageData != null || starageData != 'null') {
+      starageData.forEach(storageElement => {
+        if (storageElement.name === formData.name) {
+          storageElement.todos.push(formData.todos[0]);
+          return starageData;
+        }
+      });
+    }
+    return false;
+  }
 
   static saveData(form){
     const project = form.elements.project.value
@@ -109,8 +121,14 @@ export default class Form {
       priority
     );
     if (!Form.formValidation(todo)) return false;
-    Form.saveDataToTheLocalStorage('todoApp', [{name: project, color: color.color, todos: [todo]}]);
-    console.log(Form.getDataforTheLocalStorage('todoApp'));
+  
+    const formData = {name: project, color: color.color, todos: [todo]};
+    const storageProject = Form.lookExistenceProject(formData);
+
+    if (storageProject != null) {
+      Form.saveDataToTheLocalStorage('todoApp', storageProject);
+    }
+    
     return true;
   }
 
