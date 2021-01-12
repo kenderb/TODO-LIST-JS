@@ -13,7 +13,25 @@ export default class Render {
     return starage;
   }
   
-  
+  static createAProjectDiv(project, projectContainer) {
+    const projectDiv = document.createElement('div');
+    projectDiv.className = 'project';
+    projectDiv.innerHTML =`
+    <p class="gray-color project-number">
+      <span id="project-number">${(project.todos).length}</span>  Todos
+    </p>
+    <b>${project.name} </b>
+    <div class="project-color-default" id="${project.name}-color">
+    </div>`;
+    projectContainer.append(projectDiv);
+    const colorContainer = document.getElementById(`${project.name}-color`);
+    colorContainer.style.backgroundColor = project.color;
+    colorContainer.style.boxShadow = `
+      0 0 1px 0.5px ${project.color},
+      0 0 2px 1px ${project.color},
+      0 0 8px 1px ${project.color};
+    `;
+  }
   renderProjects() {
     const projects = Render.getDataforTheLocalStorage('todoApp');
     const projectContainer = document.getElementById('projects');
@@ -21,16 +39,7 @@ export default class Render {
     console.log(projectContainer);
     if (projects) {
       for (const project of projects) {
-        const projectDiv = document.createElement('div');
-        projectDiv.className = 'project';
-        projectDiv.innerHTML =`
-        <p class="gray-color project-number">
-          <span id="project-number">${(project.todos).length}</span>  Todos
-        </p>
-        <b>${project.name} </b>
-        <div class="project-color-default" id="project-color">
-        </div>`;
-        projectContainer.append(projectDiv);
+        Render.createAProjectDiv(project, projectContainer)
         console.log(project.color);
       }
     }
