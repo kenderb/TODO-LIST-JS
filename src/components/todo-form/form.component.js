@@ -99,7 +99,6 @@ export default class Form {
     const priority = form.elements.priority.value;
     if (projectStorageData === null) Form.saveDataToTheLocalStorage(`${project}Color`, {color: '#d01de0'})
     const color = Form.getDataforTheLocalStorage(`${project}Color`);
-    console.log(color);
     const todo = new Todo(
       project,
       title,
@@ -108,7 +107,8 @@ export default class Form {
       priority
     );
     Form.formValidation(todo);
-    return [{name: project, color: color.color, todos: [todo]}];
+    Form.saveDataToTheLocalStorage('todoApp', [{name: project, color: color.color, todos: [todo]}])
+    return Form.getDataforTheLocalStorage('todoApp');
   }
 
   getFromData() {
