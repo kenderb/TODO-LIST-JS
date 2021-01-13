@@ -9,6 +9,23 @@
   }
 }
 
+.todos {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 768px) {
+  .todos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .todos {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
+
 .todo {
   position: relative;
   overflow: hidden;
@@ -17,7 +34,7 @@
   background-color: $primary-color;
   padding: 1rem;
   border-radius: 1rem;
-  margin: 0  0 0.4rem 0;
+  margin: 0.4rem;
 }
 .checkbox {
   margin-right: 1rem;
