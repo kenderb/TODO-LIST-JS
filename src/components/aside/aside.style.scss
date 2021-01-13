@@ -1,0 +1,53 @@
+@import '../../styles/colors';
+
+.aside-container {
+  top: 0;
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(29, 29, 29, 0.315);
+  width: 100vw;
+  height: 100vh;
+}
+
+.top-left-button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+  padding: 0.1rem;
+  background-color: transparent;
+  color: white;
+  border: $white-gray solid 1px;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+}
+
+.projects-button {
+  background-color: transparent;
+  color: $white-gray;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-right: 2rem;
+}
+
+.photo-container {
+  margin: 2rem;
+  padding: 0.2rem;
+  border: $project-one-color solid 2px;
+  border-radius: 6rem;
+}
+
+.photo-bg {
+  background-color: $white-gray;
+  border-radius: 5rem;
+  padding: 0.5rem;
+}
+
+.aside-menu {
+  margin-top: 2rem;
+}

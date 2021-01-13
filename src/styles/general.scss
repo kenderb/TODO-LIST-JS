@@ -1,0 +1,55 @@
+@import 'colors';
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  background-color: $secondary-color;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+.gray-color {
+  color: $white-gray;
+}
+
+.d-flex {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.main-container {
+  h1 {
+    font-size: 1.4rem;
+    margin: 1rem;
+  }
+}
+
+.left-aside {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 0 1.2rem 1.2rem 0;
+  background-color: $primary-color;
+  max-width: 12rem;
+  height: 100vh;
+
+  h2 {
+    margin: 1rem 0 1rem 0;
+    line-height: 2rem;
+  }
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
