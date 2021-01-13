@@ -12,36 +12,6 @@ export default class Render {
     }
     return starage;
   }
-  
-  static renderProjectCard(project, projectContainer) {
-    const projectDiv = document.createElement('div');
-    projectDiv.className = 'project';
-    projectDiv.innerHTML =`
-    <p class="gray-color project-number">
-      <span id="project-number">${(project.todos).length}</span>  Todos
-    </p>
-    <b>${project.name} </b>
-    <div class="project-color-default" id="${project.name}-color">
-    </div>`;
-    projectContainer.append(projectDiv);
-    const colorContainer = document.getElementById(`${project.name}-color`);
-    colorContainer.style.backgroundColor = project.color;
-    projectDiv.addEventListener('click', (e)=> {
-      console.log(e.target);
-    });
-  }
-  
-  renderProjects() {
-    const projects = Render.getDatafromTheLocalStorage('todoApp');
-    const projectContainer = document.getElementById('projects');
-    projectContainer.innerHTML = '';
-    if (projects) {
-      for (const project of projects) {
-        Render.renderProjectCard(project, projectContainer)
-      }
-    }
-  }
-  
   static eventForClick(todo, todoDiv, project, data){
     const deleteTitleSpaces = (todo.title).replace(/\s/g, '');
     todoDiv.addEventListener('click', (e) => {
@@ -138,7 +108,7 @@ export default class Render {
     `;
     return todoCard;
   }
-
+  
   static construcCard(todoContainer, project, todo, data){
     const todoDiv = document.createElement('div');
     const deleteTitleSpaces = (todo.title).replace(/\s/g, '');
@@ -151,7 +121,45 @@ export default class Render {
     const editableDescription = document.getElementById(`description-${deleteTitleSpaces}-${project.name}`);
     editableDescription.contentEditable = true;
     getCircle.style.border = `${project.color} 1px solid`;
+    
   }
+
+  static renderProjectCard(project, projectContainer, data) {
+    const projectDiv = document.createElement('div');
+    projectDiv.className = 'project';
+    projectDiv.innerHTML =`
+    <p class="gray-color project-number">
+      <span id="project-number">${(project.todos).length}</span>  Todos
+    </p>
+    <b>${project.name} </b>
+    <div class="project-color-default" id="${project.name}-color">
+    </div>`;
+    projectContainer.append(projectDiv);
+    const colorContainer = document.getElementById(`${project.name}-color`);
+    colorContainer.style.backgroundColor = project.color;
+    projectDiv.addEventListener('click', ()=> {
+      const todoContainer = document.getElementById('all-todos-container');
+      todoContainer.innerHTML = '';
+      if (project.todos) {
+        for (const todo of project.todos) {
+          Render.construcCard(todoContainer, project, todo, data);
+        }
+      }
+    });
+  }
+  
+  renderProjects() {
+    const data = Render.getDatafromTheLocalStorage('todoApp');
+    const projectContainer = document.getElementById('projects');
+    projectContainer.innerHTML = '';
+    if (data) {
+      for (const project of data) {
+        Render.renderProjectCard(project, projectContainer, data)
+      }
+    }
+  }
+
+
 
   renderAllTodos() {
     const data = Render.getDatafromTheLocalStorage('todoApp');
