@@ -63,14 +63,14 @@ export default class Render {
               <div class="priority-color-container priority-color-${todo.priority}"></div>
             </div>
             <div class="todo-details d-none" id="details-${deleteTitleSpaces}-${project.name}">
-              <h4 contenteditable="true" id="editable-title-${deleteTitleSpaces}-${project.name}">${todo.title}</h4> <br/>
-              <span>Due date:</span><input type="date" value="${todo.date}" id="edit-date-${deleteTitleSpaces}-${project.name}">
+              <h4 contenteditable="true" id="editable-title-${deleteTitleSpaces}-${project.name}">${todo.title}</h4>
+              <p>Due date:</p><input type="date" value="${todo.date}" id="edit-date-${deleteTitleSpaces}-${project.name}">
               <p>Description: </p>
               <p class="todo-description" id="description-${deleteTitleSpaces}-${project.name}">
                   ${todo.description}
               </p> <br/>
               <p>Priority: </p>
-              <select id="priority-${deleteTitleSpaces}-${project.name}" name="priority">
+              <select id="priority-${deleteTitleSpaces}-${project.name}">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -78,7 +78,6 @@ export default class Render {
             </div>
           `;
           todoDiv.addEventListener('click', (e) => {
-            console.log(e.target.id);
             if (e.target.id === `title-${deleteTitleSpaces}-${project.name}` || 
                 e.target.id === `date-${deleteTitleSpaces}-${project.name}`  ||
                 e.target.id === `container-${deleteTitleSpaces}-${project.name}`) {
@@ -87,12 +86,13 @@ export default class Render {
             }
             if (e.target.id === `delete-${deleteTitleSpaces}-${project.name}`) {
               const currentTodo = document.getElementById(`container-${deleteTitleSpaces}-${project.name}`);
+              const currentDetail = document.getElementById(`details-${deleteTitleSpaces}-${project.name}`);
               const indexOfItem = (project.todos).indexOf(todo);
               if (indexOfItem > -1) {
                 (project.todos).splice(indexOfItem, 1);
                 currentTodo.remove();
+                currentDetail.remove();
                 Render.saveDataToTheLocalStorage('todoApp', data);
-                location.reload();
               }
             }
           });
