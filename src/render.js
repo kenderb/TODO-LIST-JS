@@ -63,11 +63,12 @@ export default class Render {
               <div class="priority-color-container priority-color-${todo.priority}"></div>
             </div>
             <div class="todo-details d-none" id="details-${deleteTitleSpaces}-${project.name}">
-              <h4>${todo.title}</h4> <br/>
-              <span>Due date:</span><p> ${todo.date}</p> <br/>
+              <h4 contenteditable="true" id="editable-title-${deleteTitleSpaces}-${project.name}">${todo.title}</h4> <br/>
+              <span>Due date:</span><p > ${todo.date}</p> <br/>
               <p class="todo-description" id="description-${deleteTitleSpaces}-${project.name}">
                   ${todo.description}
-              </p>
+              </p> <br/>
+              <p>Priority: </p>
               <select id="priority-${deleteTitleSpaces}-${project.name}" name="priority">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -76,11 +77,22 @@ export default class Render {
             </div>
           `;
           todoDiv.addEventListener('click', (e) => {
+            console.log(e.target.id);
             if (e.target.id === `title-${deleteTitleSpaces}-${project.name}` || 
                 e.target.id === `date-${deleteTitleSpaces}-${project.name}`  ||
                 e.target.id === `container-${deleteTitleSpaces}-${project.name}`) {
               const detailsContainer = document.getElementById(`details-${deleteTitleSpaces}-${project.name}`)
               detailsContainer.classList.toggle('d-none');
+            }
+            if (e.target.id === `delete-${deleteTitleSpaces}-${project.name}`) {
+              const currentTodo = document.getElementById(`container-${deleteTitleSpaces}-${project.name}`);
+              const indexOfItem = (project.todos).indexOf(todo);
+              if (indexOfItem > -1) {
+                (project.todos).splice(indexOfItem, 1);
+                currentTodo.remove();
+                Render.saveDataToTheLocalStorage('todoApp', data);
+                location.reload();
+              }
             }
           });
           todoDiv.addEventListener('focusout', (e) => {
@@ -88,6 +100,12 @@ export default class Render {
             if (e.target.id === `description-${deleteTitleSpaces}-${project.name}`) {
               todo.description = e.target.innerHTML;
               Render.saveDataToTheLocalStorage('todoApp', data);
+            }
+            
+            if (e.target.id === `editable-title-${deleteTitleSpaces}-${project.name}`) {
+              todo.title = e.target.innerHTML;
+              Render.saveDataToTheLocalStorage('todoApp', data);
+              location.reload();
             }
             if (e.target.id === `priority-${deleteTitleSpaces}-${project.name}`) {
               console.log(e.target.value);
