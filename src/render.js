@@ -30,9 +30,15 @@ export default class Render {
         }
       }
       if (e.target.id === `checkbox-${todo.id}`) {
+        const storage = new LocalStorage('todoApp');
         const checkMark = document.getElementById(`check-mark-${todo.id}`);
+        const todoTitle = document.getElementById(`title-${todo.id}`);
+        const checkBox = document.getElementById(`checkbox-${todo.id}`);
+        todoTitle.classList.toggle('cross-line');
         checkMark.classList.toggle('d-none');
-        console.log(checkMark);
+        todo.check = checkBox.checked;
+        storage.saveDataToTheLocalStorage(data);
+        window.location.reload();
       }
     });
   }
@@ -67,19 +73,35 @@ export default class Render {
     });
   }
 
+  static renderCheckCard(todo) {
+    if (todo.check) {
+      return `<div class="checkbox-container"id="check-${todo.id}">
+        <input type="checkbox" name="checkbox-${todo.id}" id="checkbox-${todo.id}" class="checkbox" checked>
+        <label for="checkbox-${todo.id}" class="checkbox-circle" id="label-${todo.id}"></label>
+        <label for="checkbox-${todo.id}" id="check-mark-${todo.id}" class="checkbox-checker">
+        <ion-icon name="checkmark-outline"></ion-icon>
+        </label>
+      </div>
+      <p class="todo-title cross-line" id="title-${todo.id}">
+        ${todo.title}
+      </p>`;
+    }
+    return `<div class="checkbox-container"id="check-${todo.id}">
+      <input type="checkbox" name="checkbox-${todo.id}" id="checkbox-${todo.id}" class="checkbox">
+      <label for="checkbox-${todo.id}" class="checkbox-circle" id="label-${todo.id}"></label>
+      <label for="checkbox-${todo.id}" id="check-mark-${todo.id}" class="checkbox-checker d-none">
+      <ion-icon name="checkmark-outline"></ion-icon>
+      </label>
+    </div>
+    <p class="todo-title" id="title-${todo.id}">
+      ${todo.title}
+    </p>`;
+  }
+
   static renderTodoCard(todo) {
     const todoCard = `
       <div class="todo d-flex" id="container-${todo.id}">
-        <div class="checkbox-container"id="check-${todo.id}">
-          <input type="checkbox" name="checkbox-${todo.id}" id="checkbox-${todo.id}" class="checkbox">
-          <label for="checkbox-${todo.id}" class="checkbox-circle" id="label-${todo.id}"></label>
-          <label for="checkbox-${todo.id}" id="check-mark-${todo.id}" class="checkbox-checker">
-          <ion-icon name="checkmark-outline"></ion-icon>
-          </label>
-        </div>
-        <p class="todo-title" id="title-${todo.id}">
-          ${todo.title}
-        </p>
+        ${Render.renderCheckCard(todo)}
         <div class="todo-date ml-auto gray-color" id="date-${todo.id}"> Due date: ${todo.date}</div>
         <ion-icon name="trash-outline" class="delete-todo-icon" id="delete-${todo.id}"></ion-icon>
         <div class="priority-color-container priority-color-${todo.priority}" id="color-${todo.id}"></div>

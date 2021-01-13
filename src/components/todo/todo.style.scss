@@ -45,6 +45,11 @@
   opacity: 0;
 }
 
+.cross-line {
+  text-decoration: line-through;
+  color: $white-gray;
+}
+
 .checkbox-container {
   position: relative;
 }
