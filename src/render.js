@@ -72,22 +72,23 @@ export default class Render {
       }
 
       if (e.target.id === `editable-title-${deleteTitleSpaces}-${project.name}`) {
+        const titleTag = document.getElementById(`title-${deleteTitleSpaces}-${project.name}`)
+        titleTag.innerHTML = e.target.innerHTML;
         todo.title = e.target.innerHTML;
         Render.saveDataToTheLocalStorage('todoApp', data);
-        location.reload();
       }
 
       if (e.target.id === `priority-${deleteTitleSpaces}-${project.name}`) {
-        console.log(e.target.value);
         todo.priority = e.target.value;
         Render.saveDataToTheLocalStorage('todoApp', data);
         location.reload();
       }
       
       if (e.target.id === `edit-date-${deleteTitleSpaces}-${project.name}`) {
+        const dateTag = document.getElementById(`date-${deleteTitleSpaces}-${project.name}`)
+        dateTag.innerHTML = `Due date: ${e.target.value}`
         todo.date = e.target.value;
         Render.saveDataToTheLocalStorage('todoApp', data);
-        location.reload();
       }
     });
   }
@@ -104,7 +105,7 @@ export default class Render {
         </p>
         <div class="todo-date ml-auto gray-color" id="date-${deleteTitleSpaces}-${project.name}"> Due date: ${todo.date}</div>
         <ion-icon name="trash-outline" class="delete-todo-icon" id="delete-${deleteTitleSpaces}-${project.name}"></ion-icon>
-        <div class="priority-color-container priority-color-${todo.priority}"></div>
+        <div class="priority-color-container priority-color-${todo.priority}" id="color-${deleteTitleSpaces}-${project.name}"></div>
       </div>
       <div class="todo-details d-none" id="details-${deleteTitleSpaces}-${project.name}">
         <div class="edit-container">
