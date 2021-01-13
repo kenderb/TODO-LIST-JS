@@ -64,7 +64,8 @@ export default class Render {
             </div>
             <div class="todo-details d-none" id="details-${deleteTitleSpaces}-${project.name}">
               <h4 contenteditable="true" id="editable-title-${deleteTitleSpaces}-${project.name}">${todo.title}</h4> <br/>
-              <span>Due date:</span><p > ${todo.date}</p> <br/>
+              <span>Due date:</span><input type="date" value="${todo.date}" id="edit-date-${deleteTitleSpaces}-${project.name}">
+              <p>Description: </p>
               <p class="todo-description" id="description-${deleteTitleSpaces}-${project.name}">
                   ${todo.description}
               </p> <br/>
@@ -101,15 +102,22 @@ export default class Render {
               todo.description = e.target.innerHTML;
               Render.saveDataToTheLocalStorage('todoApp', data);
             }
-            
+
             if (e.target.id === `editable-title-${deleteTitleSpaces}-${project.name}`) {
               todo.title = e.target.innerHTML;
               Render.saveDataToTheLocalStorage('todoApp', data);
               location.reload();
             }
+
             if (e.target.id === `priority-${deleteTitleSpaces}-${project.name}`) {
               console.log(e.target.value);
               todo.priority = e.target.value;
+              Render.saveDataToTheLocalStorage('todoApp', data);
+              location.reload();
+            }
+            
+            if (e.target.id === `edit-date-${deleteTitleSpaces}-${project.name}`) {
+              todo.date = e.target.value;
               Render.saveDataToTheLocalStorage('todoApp', data);
               location.reload();
             }
