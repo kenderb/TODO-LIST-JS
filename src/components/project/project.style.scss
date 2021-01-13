@@ -11,12 +11,11 @@
   padding: 1rem;
   min-width: 11rem;
   margin: 1rem 0.05rem 1rem 0.5rem;
-  
-  -webkit-box-shadow: -3px 24px 15px -13px rgba(8,23,94,0.44);
-  -moz-box-shadow: -3px 24px 15px -13px rgba(8,23,94,0.44);
-  box-shadow: -3px 24px 15px -13px rgba(8,23,94,0.44);
-  
-  background-color:$primary-color;
+  -webkit-box-shadow: -3px 24px 15px -13px rgba(8, 23, 94, 0.44);
+  -moz-box-shadow: -3px 24px 15px -13px rgba(8, 23, 94, 0.44);
+  box-shadow: -3px 24px 15px -13px rgba(8, 23, 94, 0.44);
+  background-color: $primary-color;
+
   &:active {
     transform: scale(1.06);
   }
@@ -28,7 +27,7 @@
   height: 0.2rem;
   border-radius: 1rem;
   box-shadow:
-    0 0 1px 0.5px $secondary-color, 
+    0 0 1px 0.5px $secondary-color,
     0 0 2px 1px $project-one-color,
     0 0 8px 1px $project-one-color;
 }
@@ -41,8 +40,9 @@
   padding-bottom: 1rem;
   scrollbar-width: none;
   overflow-y: hidden;
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
 }
+
 .projects::-webkit-scrollbar {
   display: none;
 }

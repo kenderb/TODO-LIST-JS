@@ -19,7 +19,6 @@
 }
 
 .form-segment {
-  
   margin: 0.5rem auto;
 
   input,
@@ -37,7 +36,7 @@
   }
 
   label {
-    color:white;
+    color: white;
     margin-bottom: 0.5rem;
     font-size: 0.8rem;
     display: block;
@@ -52,20 +51,16 @@
     min-width: 6rem;
     margin: 0.2rem;
     outline: none;
-    
+
     &:hover {
-      background-color:darken($project-three-color, 10%) ;
+      background-color: darken($project-three-color, 10%);
     }
-  
+
     &:active {
       transform: scale(1.1);
     }
   }
-    
 }
-
-
-
 
 .errors {
   text-align: center;
@@ -91,6 +86,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
+
   .project-form {
     max-width: 20rem;
     margin: 9rem auto;
@@ -101,10 +97,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
+    box-shadow: 0 4px 8px 0 #0003, 0 6px 20px 0 #00000030;
+
     .project-input-container {
       margin: 0.5rem;
     }
+
     button {
       background-color: $project-one-color;
       color: white;
@@ -114,34 +112,38 @@
       min-width: 6rem;
       margin: 0.2rem;
       outline: none;
-      
+
       &:hover {
-        background-color:darken($project-one-color, 10%) ;
+        background-color: darken($project-one-color, 10%);
       }
-    
+
       &:active {
         transform: scale(1.1);
       }
     }
-    input[type="text"]  {
+
+    input[type="text"] {
       background-color: white;
       border: $project-one-color solid 0.5px;
       padding: 0.6rem;
       border-radius: 0.6rem;
+
       ::placeholder {
         color: white;
       }
-      :-ms-input-placeholder {
+
+      ::-ms-input-placeholder {
         color: white;
       }
-      ::-ms-input-placeholder {
+
+      :-ms-input-placeholder {
         color: white;
       }
     }
   }
 }
 
-#cancel-button, 
+#cancel-button,
 #cancel-project-button {
   background-color: transparent;
   border: solid $white-gray 1px;
