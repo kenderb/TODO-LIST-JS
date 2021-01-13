@@ -59,6 +59,16 @@
   border-radius: 1.1rem;
 }
 
+.checkbox-checker {
+  font-size: 1.1rem;
+  z-index: 4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
 .priority-color-3 {
   background-color: green;
 }

@@ -8,12 +8,14 @@ export default class Render {
 
   static eventForClick(todo, todoDiv, project, data) {
     todoDiv.addEventListener('click', (e) => {
+
       if (e.target.id === `title-${todo.id}`
           || e.target.id === `date-${todo.id}`
           || e.target.id === `container-${todo.id}`) {
         const detailsContainer = document.getElementById(`details-${todo.id}`);
         detailsContainer.classList.toggle('d-none');
       }
+
       if (e.target.id === `delete-${todo.id}`) {
         const currentTodo = document.getElementById(`container-${todo.id}`);
         const currentDetail = document.getElementById(`details-${todo.id}`);
@@ -26,6 +28,11 @@ export default class Render {
           storage.saveDataToTheLocalStorage(data);
           window.location.reload();
         }
+      }
+      if (e.target.id === `checkbox-${todo.id}`) {
+        const checkMark = document.getElementById(`check-mark-${todo.id}`);
+        checkMark.classList.toggle('d-none');
+        console.log(checkMark);
       }
     });
   }
@@ -66,6 +73,9 @@ export default class Render {
         <div class="checkbox-container"id="check-${todo.id}">
           <input type="checkbox" name="checkbox-${todo.id}" id="checkbox-${todo.id}" class="checkbox">
           <label for="checkbox-${todo.id}" class="checkbox-circle" id="label-${todo.id}"></label>
+          <label for="checkbox-${todo.id}" id="check-mark-${todo.id}" class="checkbox-checker">
+          <ion-icon name="checkmark-outline"></ion-icon>
+          </label>
         </div>
         <p class="todo-title" id="title-${todo.id}">
           ${todo.title}
