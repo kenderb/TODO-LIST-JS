@@ -10,5 +10,4 @@ export default class Todo {
     this.priority = priority;
     this.check = check;
   }
-  
 }

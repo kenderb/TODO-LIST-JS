@@ -1,24 +1,28 @@
 
-
 export default class Render {
+  constructor() {
+    this.projectContainer = document.getElementById('projects');
+    this.todoContainer = document.getElementById('all-todos-container');
+  }
+
   static saveDataToTheLocalStorage(key, value) {
     window.localStorage.setItem(key, JSON.stringify(value));
   }
 
   static getDatafromTheLocalStorage(key) {
     const starage = JSON.parse(window.localStorage.getItem(key));
-    if (starage === null ||starage === 'null') {
+    if (starage === null || starage === 'null') {
       return [];
     }
     return starage;
   }
-  static eventForClick(todo, todoDiv, project, data){
-    const deleteTitleSpaces = (todo.title).replace(/\s/g, '');
+
+  static eventForClick(todo, todoDiv, project, data) {
     todoDiv.addEventListener('click', (e) => {
-      if (e.target.id === `title-${todo.id}` || 
-          e.target.id === `date-${todo.id}`  ||
-          e.target.id === `container-${todo.id}`) {
-        const detailsContainer = document.getElementById(`details-${todo.id}`)
+      if (e.target.id === `title-${todo.id}`
+          || e.target.id === `date-${todo.id}`
+          || e.target.id === `container-${todo.id}`) {
+        const detailsContainer = document.getElementById(`details-${todo.id}`);
         detailsContainer.classList.toggle('d-none');
       }
       if (e.target.id === `delete-${todo.id}`) {
@@ -36,17 +40,15 @@ export default class Render {
     });
   }
 
-  static eventForFocusOut(todoDiv, project, todo, data){
-    const deleteTitleSpaces = (todo.title).replace(/\s/g, '');
+  static eventForFocusOut(todoDiv, project, todo, data) {
     todoDiv.addEventListener('focusout', (e) => {
-      console.log(e.target.id);
       if (e.target.id === `description-${todo.id}`) {
         todo.description = e.target.innerHTML;
         Render.saveDataToTheLocalStorage('todoApp', data);
       }
 
       if (e.target.id === `editable-title-${todo.id}`) {
-        const titleTag = document.getElementById(`title-${todo.id}`)
+        const titleTag = document.getElementById(`title-${todo.id}`);
         titleTag.innerHTML = e.target.innerHTML;
         todo.title = e.target.innerHTML;
         Render.saveDataToTheLocalStorage('todoApp', data);
@@ -57,18 +59,18 @@ export default class Render {
         Render.saveDataToTheLocalStorage('todoApp', data);
         location.reload();
       }
-      
+
       if (e.target.id === `edit-date-${todo.id}`) {
-        const dateTag = document.getElementById(`date-${todo.id}`)
-        dateTag.innerHTML = `Due date: ${e.target.value}`
+        const dateTag = document.getElementById(`date-${todo.id}`);
+        dateTag.innerHTML = `Due date: ${e.target.value}`;
         todo.date = e.target.value;
         Render.saveDataToTheLocalStorage('todoApp', data);
       }
     });
   }
 
-  static renderTodoCard(deleteTitleSpaces, project, todo){
-    const todoCard =  `
+  static renderTodoCard(deleteTitleSpaces, project, todo) {
+    const todoCard = `
       <div class="todo d-flex" id="container-${todo.id}">
         <div class="checkbox-container"id="check-${todo.id}">
           <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">
@@ -108,8 +110,8 @@ export default class Render {
     `;
     return todoCard;
   }
-  
-  static construcCard(todoContainer, project, todo, data){
+
+  static construcCard(todoContainer, project, todo, data) {
     const todoDiv = document.createElement('div');
     const deleteTitleSpaces = (todo.title).replace(/\s/g, '');
     todoDiv.id = `todo-${deleteTitleSpaces}`;
@@ -121,13 +123,12 @@ export default class Render {
     const editableDescription = document.getElementById(`description-${todo.id}`);
     editableDescription.contentEditable = true;
     getCircle.style.border = `${project.color} 1px solid`;
-    
   }
 
   static renderProjectCard(project, projectContainer, data) {
     const projectDiv = document.createElement('div');
     projectDiv.className = 'project';
-    projectDiv.innerHTML =`
+    projectDiv.innerHTML = `
     <p class="gray-color project-number">
       <span id="project-number">${(project.todos).length}</span>  Todos
     </p>
@@ -137,42 +138,38 @@ export default class Render {
     projectContainer.append(projectDiv);
     const colorContainer = document.getElementById(`${project.name}-color`);
     colorContainer.style.backgroundColor = project.color;
-    projectDiv.addEventListener('click', ()=> {
+    projectDiv.addEventListener('click', () => {
       const todoContainer = document.getElementById('all-todos-container');
       todoContainer.innerHTML = '';
       if (project.todos) {
-        for (const todo of project.todos) {
+        (project.todos).forEach(todo => {
           Render.construcCard(todoContainer, project, todo, data);
-        }
+        });
       }
     });
   }
-  
+
   renderProjects() {
     const data = Render.getDatafromTheLocalStorage('todoApp');
-    const projectContainer = document.getElementById('projects');
-    projectContainer.innerHTML = '';
+
+    this.projectContainer.innerHTML = '';
     if (data) {
-      for (const project of data) {
-        Render.renderProjectCard(project, projectContainer, data)
-      }
+      data.forEach(project => {
+        Render.renderProjectCard(project, this.projectContainer, data);
+      });
     }
   }
-
 
 
   renderAllTodos() {
     const data = Render.getDatafromTheLocalStorage('todoApp');
-    const todoContainer = document.getElementById('all-todos-container');
-    todoContainer.innerHTML = ''
+    this.todoContainer.innerHTML = '';
     if (data) {
-      for (const project of data) {
-        for (const todo of project.todos) {
-          Render.construcCard(todoContainer, project, todo, data);
-        }
-      }
+      data.forEach(project => {
+        (project.todos).forEach(todo => {
+          Render.construcCard(this.todoContainer, project, todo, data);
+        });
+      });
     }
   }
-
-  
 }

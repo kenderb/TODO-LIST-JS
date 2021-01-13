@@ -1,5 +1,6 @@
 import './aside.style.scss';
 import logo from '../../images/logo_02.svg';
+
 export default class Aside {
   constructor(name, aisdeContainer) {
     this.name = name;
@@ -7,7 +8,7 @@ export default class Aside {
     this.asideContainer = aisdeContainer;
   }
 
-  putLogo(image){
+  putLogo(image) {
     image.src = this.photo;
   }
 
@@ -16,6 +17,6 @@ export default class Aside {
       if (e.target.id === 'aside-container' || e.target.id === 'arrow') {
         this.asideContainer.classList.add('d-none');
       }
-    })
+    });
   }
 }

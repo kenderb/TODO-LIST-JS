@@ -26,7 +26,7 @@ aside.putLogo(photoImage);
 aside.activateClose();
 
 const navBar = new Nav();
-navBar.activateOpenMemu(menuBtn, aisdeContainer)
+navBar.activateOpenMemu(menuBtn, aisdeContainer);
 
 
 const button = new Button();
