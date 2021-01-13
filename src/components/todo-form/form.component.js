@@ -5,8 +5,8 @@ import Project from '../project/project.component';
 
 export default class Form {
   constructor(container, btn) {
-    this.container = container;
-    this.form = this.container.children[1];
+    const containerArray = container.children[1];
+    this.form = containerArray;
     this.btn = btn;
   }
 
@@ -96,12 +96,14 @@ export default class Form {
         Form.closeForm(projectFormContainer);
         return false;
       }
+      return false;
     });
   }
 
   static lookExistenceProject(formData) {
     const storageData = Form.getDataforTheLocalStorage('todoApp');
     if (storageData) {
+      // eslint-disable-next-line no-restricted-syntax
       for (const storageElement of storageData) {
         if (storageElement.name === formData.name) {
           storageElement.todos.push(formData.todos[0]);
@@ -136,8 +138,6 @@ export default class Form {
     const formData = { name: project, color: color.color, todos: [todo] };
     const storageProject = Form.lookExistenceProject(formData);
     Form.saveDataToTheLocalStorage('todoApp', storageProject);
-    console.log(Form.getDataforTheLocalStorage('todoApp'));
-
     return true;
   }
 
@@ -145,15 +145,15 @@ export default class Form {
     const projectList = document.getElementById('project-list');
     const storageProjects = Form.getDataforTheLocalStorage('todoApp');
     if (storageProjects) {
-      for (const project of storageProjects) {
-        if (project.name != 'default') {
+      storageProjects.forEach(project => {
+        if (project.name !== 'default') {
           const opinionTag = document.createElement('option');
           opinionTag.value = project.name;
           opinionTag.id = project.name;
           opinionTag.innerHTML = project.name;
           projectList.append(opinionTag);
         }
-      }
+      });
     }
   }
 

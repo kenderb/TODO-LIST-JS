@@ -25,8 +25,8 @@ const aside = new Aside('kender', aisdeContainer);
 aside.putLogo(photoImage);
 aside.activateClose();
 
-const navBar = new Nav();
-navBar.activateOpenMemu(menuBtn, aisdeContainer);
+const navBar = new Nav(menuBtn, aisdeContainer);
+navBar.activateOpenMemu();
 
 
 const button = new Button();

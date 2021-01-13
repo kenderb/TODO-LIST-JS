@@ -34,13 +34,13 @@ export default class Render {
           currentTodo.remove();
           currentDetail.remove();
           Render.saveDataToTheLocalStorage('todoApp', data);
-          location.reload();
+          window.location.reload();
         }
       }
     });
   }
 
-  static eventForFocusOut(todoDiv, project, todo, data) {
+  static eventForFocusOut(todoDiv, todo, data) {
     todoDiv.addEventListener('focusout', (e) => {
       if (e.target.id === `description-${todo.id}`) {
         todo.description = e.target.innerHTML;
@@ -57,7 +57,7 @@ export default class Render {
       if (e.target.id === `priority-${todo.id}`) {
         todo.priority = e.target.value;
         Render.saveDataToTheLocalStorage('todoApp', data);
-        location.reload();
+        window.location.reload();
       }
 
       if (e.target.id === `edit-date-${todo.id}`) {
@@ -69,7 +69,7 @@ export default class Render {
     });
   }
 
-  static renderTodoCard(deleteTitleSpaces, project, todo) {
+  static renderTodoCard(todo) {
     const todoCard = `
       <div class="todo d-flex" id="container-${todo.id}">
         <div class="checkbox-container"id="check-${todo.id}">
@@ -115,9 +115,9 @@ export default class Render {
     const todoDiv = document.createElement('div');
     const deleteTitleSpaces = (todo.title).replace(/\s/g, '');
     todoDiv.id = `todo-${deleteTitleSpaces}`;
-    todoDiv.innerHTML = Render.renderTodoCard(deleteTitleSpaces, project, todo);
+    todoDiv.innerHTML = Render.renderTodoCard(todo);
     Render.eventForClick(todo, todoDiv, project, data);
-    Render.eventForFocusOut(todoDiv, project, todo, data);
+    Render.eventForFocusOut(todoDiv, todo, data);
     todoContainer.append(todoDiv);
     const getCircle = document.getElementById(`${todo.id}`);
     const editableDescription = document.getElementById(`description-${todo.id}`);

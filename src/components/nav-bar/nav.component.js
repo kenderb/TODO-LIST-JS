@@ -1,12 +1,14 @@
 import './nav.style.scss';
 
 export default class Navbar {
-  constructor() {
+  constructor(element, openElement) {
+    this.element = element;
+    this.openElement = openElement;
   }
 
-  activateOpenMemu(element, openElement) {
-    element.addEventListener('click', (e) => {
-      openElement.classList.toggle('d-none');
+  activateOpenMemu() {
+    this.element.addEventListener('click', () => {
+      this.openElement.classList.toggle('d-none');
     });
   }
 }
