@@ -17,7 +17,7 @@
 
 ## Live Demo
 
-[Live version](https://rawcdn.githack.com/kenderb/TODO-LIST-JS/aee88b4bd19c120051ce8489dac43637a856a9d0/dist/index.html)
+[Live version](https://rawcdn.githack.com/kenderb/TODO-LIST-JS/42368e1225c956afe7413281c42a01633fba074e/dist/index.html)
 
 ## Prerequisites
 
