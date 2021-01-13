@@ -13,6 +13,7 @@
 
 ![screenshot](Capture_one.PNG)
 ![screenshot](Capture_two.PNG)
+![screenshot](Capture_three.PNG)
 
 ## Live Demo
 
