@@ -2,6 +2,7 @@ import './form.style.scss';
 import { nanoid } from 'nanoid';
 import Todo from '../todo/todo.component';
 import Project from '../project/project.component';
+import Render from '../../render';
 
 export default class Form {
   constructor(container, btn) {
@@ -163,7 +164,12 @@ export default class Form {
     this.form.addEventListener('click', (e) => {
       if (e.target.id === 'create-button') {
         const createTodoContainer = document.getElementById('todo-form-container');
-        if (Form.saveData(this.form)) Form.closeForm(createTodoContainer);
+        if (Form.saveData(this.form)) {
+          const reloadDom = new Render();
+          reloadDom.renderProjects();
+          reloadDom.renderAllTodos();
+          Form.closeForm(createTodoContainer);
+        }
       }
 
       if (e.target.id === 'create-project') {
