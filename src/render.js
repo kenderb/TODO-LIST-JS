@@ -26,6 +26,9 @@ export default class Render {
     projectContainer.append(projectDiv);
     const colorContainer = document.getElementById(`${project.name}-color`);
     colorContainer.style.backgroundColor = project.color;
+    projectDiv.addEventListener('click', (e)=> {
+      console.log(e.target);
+    });
   }
   
   renderProjects() {
@@ -57,6 +60,7 @@ export default class Render {
           currentTodo.remove();
           currentDetail.remove();
           Render.saveDataToTheLocalStorage('todoApp', data);
+          location.reload();
         }
       }
     });

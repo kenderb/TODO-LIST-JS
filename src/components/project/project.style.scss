@@ -17,6 +17,9 @@
   box-shadow: -3px 24px 15px -13px rgba(8,23,94,0.44);
   
   background-color:$primary-color;
+  &:active {
+    transform: scale(1.06);
+  }
 }
 
 .project-color-default {
