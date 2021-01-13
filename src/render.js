@@ -8,7 +8,6 @@ export default class Render {
 
   static eventForClick(todo, todoDiv, project, data) {
     todoDiv.addEventListener('click', (e) => {
-
       if (e.target.id === `title-${todo.id}`
           || e.target.id === `date-${todo.id}`
           || e.target.id === `container-${todo.id}`) {
