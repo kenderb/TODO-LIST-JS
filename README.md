@@ -17,7 +17,7 @@
 
 ## Live Demo
 
-[Live version](https://rawcdn.githack.com/kenderb/WEATHER-APP/f217fc3e6ff8af21fed885f5a847d1ba291815bf/dist/index.html)
+[Live version](https://raw.githubusercontent.com/kenderb/TODO-LIST-JS/feature/dist/index.html)
 
 ## Prerequisites
 
