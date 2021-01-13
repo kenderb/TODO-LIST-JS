@@ -1,11 +1,10 @@
+import LocalStorage from './localStorage';
 
 export default class Render {
   constructor() {
     this.projectContainer = document.getElementById('projects');
     this.todoContainer = document.getElementById('all-todos-container');
   }
-
-  
 
   static eventForClick(todo, todoDiv, project, data) {
     todoDiv.addEventListener('click', (e) => {
@@ -21,9 +20,10 @@ export default class Render {
         const indexOfItem = (project.todos).indexOf(todo);
         if (indexOfItem > -1) {
           (project.todos).splice(indexOfItem, 1);
+          const storage = new LocalStorage('todoApp');
           currentTodo.remove();
           currentDetail.remove();
-          Render.saveDataToTheLocalStorage('todoApp', data);
+          storage.saveDataToTheLocalStorage(data);
           window.location.reload();
         }
       }
@@ -32,21 +32,22 @@ export default class Render {
 
   static eventForFocusOut(todoDiv, todo, data) {
     todoDiv.addEventListener('focusout', (e) => {
+      const storage = new LocalStorage('todoApp');
       if (e.target.id === `description-${todo.id}`) {
         todo.description = e.target.innerHTML;
-        Render.saveDataToTheLocalStorage('todoApp', data);
+        storage.saveDataToTheLocalStorage(data);
       }
 
       if (e.target.id === `editable-title-${todo.id}`) {
         const titleTag = document.getElementById(`title-${todo.id}`);
         titleTag.innerHTML = e.target.innerHTML;
         todo.title = e.target.innerHTML;
-        Render.saveDataToTheLocalStorage('todoApp', data);
+        storage.saveDataToTheLocalStorage(data);
       }
 
       if (e.target.id === `priority-${todo.id}`) {
         todo.priority = e.target.value;
-        Render.saveDataToTheLocalStorage('todoApp', data);
+        storage.saveDataToTheLocalStorage(data);
         window.location.reload();
       }
 
@@ -54,7 +55,7 @@ export default class Render {
         const dateTag = document.getElementById(`date-${todo.id}`);
         dateTag.innerHTML = `Due date: ${e.target.value}`;
         todo.date = e.target.value;
-        Render.saveDataToTheLocalStorage('todoApp', data);
+        storage.saveDataToTheLocalStorage(data);
       }
     });
   }
@@ -140,7 +141,8 @@ export default class Render {
   }
 
   renderProjects() {
-    const data = Render.getDatafromTheLocalStorage('todoApp');
+    const storage = new LocalStorage('todoApp');
+    const data = storage.getDatafromTheLocalStorage();
 
     this.projectContainer.innerHTML = '';
     if (data) {
@@ -150,9 +152,9 @@ export default class Render {
     }
   }
 
-
   renderAllTodos() {
-    const data = Render.getDatafromTheLocalStorage('todoApp');
+    const storage = new LocalStorage('todoApp');
+    const data = storage.getDatafromTheLocalStorage();
     this.todoContainer.innerHTML = '';
     if (data) {
       data.forEach(project => {
