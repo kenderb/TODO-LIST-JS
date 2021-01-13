@@ -73,6 +73,7 @@ export default class Form {
     const projectListselect = document.getElementById('project-list');
     const option = document.createElement('option');
     option.value = project.title;
+    option.selected = 'selected';
     option.id = project.title;
     option.innerHTML = project.title;
     projectListselect.append(option);
