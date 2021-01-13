@@ -77,3 +77,16 @@
 .todo-description {
   text-align: justify;
 }
+
+.edit-container {
+  margin-bottom: 1rem;
+}
+
+.editable-content {
+  color: white;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: $primary-color 1px solid;
+  background-color: transparent;
+}

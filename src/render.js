@@ -94,9 +94,9 @@ export default class Render {
 
   static renderTodoCard(deleteTitleSpaces, project, todo){
     const todoCard =  `
-      <div class=" todo d-flex" id="container-${deleteTitleSpaces}-${project.name}">
+      <div class="todo d-flex" id="container-${deleteTitleSpaces}-${project.name}">
         <div class="checkbox-container"id="check-${deleteTitleSpaces}-${project.name}">
-          <input type="checkbox" name="checkbox" id="checkbox" class="checkbox" checked="checked">
+          <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">
           <label for="checkbox" class="checkbox-circle" id="${deleteTitleSpaces}-${project.name}"></label>
         </div>
         <p class="todo-title" id="title-${deleteTitleSpaces}-${project.name}">
@@ -107,18 +107,28 @@ export default class Render {
         <div class="priority-color-container priority-color-${todo.priority}"></div>
       </div>
       <div class="todo-details d-none" id="details-${deleteTitleSpaces}-${project.name}">
-        <h4 contenteditable="true" id="editable-title-${deleteTitleSpaces}-${project.name}">${todo.title}</h4>
-        <p>Due date:</p><input type="date" value="${todo.date}" id="edit-date-${deleteTitleSpaces}-${project.name}">
-        <p>Description: </p>
-        <p class="todo-description" id="description-${deleteTitleSpaces}-${project.name}">
-            ${todo.description}
-        </p> <br/>
-        <p>Priority: </p>
-        <select id="priority-${deleteTitleSpaces}-${project.name}">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
+        <div class="edit-container">
+          <p class="gray-color">Title</p>
+          <p contenteditable="true" id="editable-title-${deleteTitleSpaces}-${project.name}" class="editable-content">${todo.title}</p>
+        </div>
+        <div class="edit-container">
+          <p class="gray-color">Due date:</p>
+          <input type="date" value="${todo.date}" id="edit-date-${deleteTitleSpaces}-${project.name}" class="editable-content">
+        </div>
+        <div class="edit-container">
+          <p class="gray-color">Description: </p>
+          <p class="editable-content" id="description-${deleteTitleSpaces}-${project.name}">
+              ${todo.description}
+          </p>
+        </div>
+        <div class="edit-container">
+          <p class="gray-color">Priority: </p>
+          <select id="priority-${deleteTitleSpaces}-${project.name}" class="editable-content">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
       </div>
     `;
     return todoCard;

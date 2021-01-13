@@ -6,11 +6,4 @@ export default class Project {
     this.color = color;
     this.todoArray = todoArray;
   }
-  
-  
-  addNewTodo(todo) {
-    this.todoArray.push(todo);
-    return this;
-  }
-  
 }
