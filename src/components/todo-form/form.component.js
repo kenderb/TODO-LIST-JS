@@ -1,6 +1,7 @@
 import './form.style.scss';
 import Todo from '../todo/todo.component';
 import Project from '../project/project.component';
+import { nanoid } from 'nanoid';
 export default class Form {
   constructor(container, btn) {
     this.container = container;
@@ -111,6 +112,7 @@ export default class Form {
   }
 
   static saveData(form){
+    const id = nanoid(10);
     const project = form.elements.project.value
     const projectStorageData = window.localStorage.getItem(`${project}Color`);
     const title = form.elements.title.value;
@@ -120,6 +122,7 @@ export default class Form {
     if (projectStorageData === null) Form.saveDataToTheLocalStorage(`${project}Color`, {color: '#d01de0'})
     const color = Form.getDataforTheLocalStorage(`${project}Color`);
     const todo = new Todo(
+      id,
       project,
       title,
       date,

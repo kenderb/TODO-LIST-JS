@@ -15,15 +15,15 @@ export default class Render {
   static eventForClick(todo, todoDiv, project, data){
     const deleteTitleSpaces = (todo.title).replace(/\s/g, '');
     todoDiv.addEventListener('click', (e) => {
-      if (e.target.id === `title-${deleteTitleSpaces}-${project.name}` || 
-          e.target.id === `date-${deleteTitleSpaces}-${project.name}`  ||
-          e.target.id === `container-${deleteTitleSpaces}-${project.name}`) {
-        const detailsContainer = document.getElementById(`details-${deleteTitleSpaces}-${project.name}`)
+      if (e.target.id === `title-${todo.id}` || 
+          e.target.id === `date-${todo.id}`  ||
+          e.target.id === `container-${todo.id}`) {
+        const detailsContainer = document.getElementById(`details-${todo.id}`)
         detailsContainer.classList.toggle('d-none');
       }
-      if (e.target.id === `delete-${deleteTitleSpaces}-${project.name}`) {
-        const currentTodo = document.getElementById(`container-${deleteTitleSpaces}-${project.name}`);
-        const currentDetail = document.getElementById(`details-${deleteTitleSpaces}-${project.name}`);
+      if (e.target.id === `delete-${todo.id}`) {
+        const currentTodo = document.getElementById(`container-${todo.id}`);
+        const currentDetail = document.getElementById(`details-${todo.id}`);
         const indexOfItem = (project.todos).indexOf(todo);
         if (indexOfItem > -1) {
           (project.todos).splice(indexOfItem, 1);
@@ -40,26 +40,26 @@ export default class Render {
     const deleteTitleSpaces = (todo.title).replace(/\s/g, '');
     todoDiv.addEventListener('focusout', (e) => {
       console.log(e.target.id);
-      if (e.target.id === `description-${deleteTitleSpaces}-${project.name}`) {
+      if (e.target.id === `description-${todo.id}`) {
         todo.description = e.target.innerHTML;
         Render.saveDataToTheLocalStorage('todoApp', data);
       }
 
-      if (e.target.id === `editable-title-${deleteTitleSpaces}-${project.name}`) {
-        const titleTag = document.getElementById(`title-${deleteTitleSpaces}-${project.name}`)
+      if (e.target.id === `editable-title-${todo.id}`) {
+        const titleTag = document.getElementById(`title-${todo.id}`)
         titleTag.innerHTML = e.target.innerHTML;
         todo.title = e.target.innerHTML;
         Render.saveDataToTheLocalStorage('todoApp', data);
       }
 
-      if (e.target.id === `priority-${deleteTitleSpaces}-${project.name}`) {
+      if (e.target.id === `priority-${todo.id}`) {
         todo.priority = e.target.value;
         Render.saveDataToTheLocalStorage('todoApp', data);
         location.reload();
       }
       
-      if (e.target.id === `edit-date-${deleteTitleSpaces}-${project.name}`) {
-        const dateTag = document.getElementById(`date-${deleteTitleSpaces}-${project.name}`)
+      if (e.target.id === `edit-date-${todo.id}`) {
+        const dateTag = document.getElementById(`date-${todo.id}`)
         dateTag.innerHTML = `Due date: ${e.target.value}`
         todo.date = e.target.value;
         Render.saveDataToTheLocalStorage('todoApp', data);
@@ -69,36 +69,36 @@ export default class Render {
 
   static renderTodoCard(deleteTitleSpaces, project, todo){
     const todoCard =  `
-      <div class="todo d-flex" id="container-${deleteTitleSpaces}-${project.name}">
-        <div class="checkbox-container"id="check-${deleteTitleSpaces}-${project.name}">
+      <div class="todo d-flex" id="container-${todo.id}">
+        <div class="checkbox-container"id="check-${todo.id}">
           <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">
-          <label for="checkbox" class="checkbox-circle" id="${deleteTitleSpaces}-${project.name}"></label>
+          <label for="checkbox" class="checkbox-circle" id="${todo.id}"></label>
         </div>
-        <p class="todo-title" id="title-${deleteTitleSpaces}-${project.name}">
+        <p class="todo-title" id="title-${todo.id}">
           ${todo.title}
         </p>
-        <div class="todo-date ml-auto gray-color" id="date-${deleteTitleSpaces}-${project.name}"> Due date: ${todo.date}</div>
-        <ion-icon name="trash-outline" class="delete-todo-icon" id="delete-${deleteTitleSpaces}-${project.name}"></ion-icon>
-        <div class="priority-color-container priority-color-${todo.priority}" id="color-${deleteTitleSpaces}-${project.name}"></div>
+        <div class="todo-date ml-auto gray-color" id="date-${todo.id}"> Due date: ${todo.date}</div>
+        <ion-icon name="trash-outline" class="delete-todo-icon" id="delete-${todo.id}"></ion-icon>
+        <div class="priority-color-container priority-color-${todo.priority}" id="color-${todo.id}"></div>
       </div>
-      <div class="todo-details d-none" id="details-${deleteTitleSpaces}-${project.name}">
+      <div class="todo-details d-none" id="details-${todo.id}">
         <div class="edit-container">
           <p class="gray-color">Title</p>
-          <p contenteditable="true" id="editable-title-${deleteTitleSpaces}-${project.name}" class="editable-content">${todo.title}</p>
+          <p contenteditable="true" id="editable-title-${todo.id}" class="editable-content">${todo.title}</p>
         </div>
         <div class="edit-container">
           <p class="gray-color">Due date:</p>
-          <input type="date" value="${todo.date}" id="edit-date-${deleteTitleSpaces}-${project.name}" class="editable-content">
+          <input type="date" value="${todo.date}" id="edit-date-${todo.id}" class="editable-content">
         </div>
         <div class="edit-container">
           <p class="gray-color">Description: </p>
-          <p class="editable-content" id="description-${deleteTitleSpaces}-${project.name}">
+          <p class="editable-content" id="description-${todo.id}">
               ${todo.description}
           </p>
         </div>
         <div class="edit-container">
           <p class="gray-color">Priority: </p>
-          <select id="priority-${deleteTitleSpaces}-${project.name}" class="editable-content">
+          <select id="priority-${todo.id}" class="editable-content">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -117,8 +117,8 @@ export default class Render {
     Render.eventForClick(todo, todoDiv, project, data);
     Render.eventForFocusOut(todoDiv, project, todo, data);
     todoContainer.append(todoDiv);
-    const getCircle = document.getElementById(`${deleteTitleSpaces}-${project.name}`);
-    const editableDescription = document.getElementById(`description-${deleteTitleSpaces}-${project.name}`);
+    const getCircle = document.getElementById(`${todo.id}`);
+    const editableDescription = document.getElementById(`description-${todo.id}`);
     editableDescription.contentEditable = true;
     getCircle.style.border = `${project.color} 1px solid`;
     
