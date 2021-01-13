@@ -9,7 +9,5 @@ export default class Todo {
     this.priority = priority;
     this.check = check;
   }
-  sayHello() {
-    console.log(`hello ${this.name} using class Todo`);
-  }
+  
 }
