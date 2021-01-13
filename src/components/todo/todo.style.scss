@@ -67,11 +67,13 @@
   overflow: hidden;
   max-width: 7rem;
 }
-.todo-description {
-  text-align: justify;
-  margin: -0.7rem 1rem;
+.todo-details {
   border-radius: 0.5rem;
   padding: 1rem;
   background-color: rgba(25, 26, 92, 0.281);
-  margin-bottom: 1.2rem;
+  margin: -0.7rem 1rem 0.5rem;
+}
+
+.todo-description {
+  text-align: justify;
 }

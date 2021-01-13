@@ -28,7 +28,17 @@ export default class Render {
     colorContainer.style.backgroundColor = project.color;
   }
   
-
+  renderProjects() {
+    const projects = Render.getDatafromTheLocalStorage('todoApp');
+    const projectContainer = document.getElementById('projects');
+    projectContainer.innerHTML = '';
+    if (projects) {
+      for (const project of projects) {
+        Render.renderProjectCard(project, projectContainer)
+      }
+    }
+  }
+  
   renderAllTodos() {
     const data = Render.getDatafromTheLocalStorage('todoApp');
     const todoContainer = document.getElementById('all-todos-container');
@@ -52,23 +62,38 @@ export default class Render {
               <ion-icon name="trash-outline" class="delete-todo-icon" id="delete-${deleteTitleSpaces}-${project.name}"></ion-icon>
               <div class="priority-color-container priority-color-${todo.priority}"></div>
             </div>
-            <div class="todo-description d-none" id="description-${deleteTitleSpaces}-${project.name}">
-                ${todo.description}
+            <div class="todo-details d-none" id="details-${deleteTitleSpaces}-${project.name}">
+              <h4>${todo.title}</h4> <br/>
+              <span>Due date:</span><p> ${todo.date}</p> <br/>
+              <p class="todo-description" id="description-${deleteTitleSpaces}-${project.name}">
+                  ${todo.description}
+              </p>
+              <select id="priority-${deleteTitleSpaces}-${project.name}" name="priority">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
             </div>
           `;
           todoDiv.addEventListener('click', (e) => {
-            console.log(e.target.id);
             if (e.target.id === `title-${deleteTitleSpaces}-${project.name}` || 
                 e.target.id === `date-${deleteTitleSpaces}-${project.name}`  ||
                 e.target.id === `container-${deleteTitleSpaces}-${project.name}`) {
-              const descriptionContainer = document.getElementById(`description-${deleteTitleSpaces}-${project.name}`)
-              descriptionContainer.classList.toggle('d-none');
+              const detailsContainer = document.getElementById(`details-${deleteTitleSpaces}-${project.name}`)
+              detailsContainer.classList.toggle('d-none');
             }
           });
           todoDiv.addEventListener('focusout', (e) => {
+            console.log(e.target.id);
             if (e.target.id === `description-${deleteTitleSpaces}-${project.name}`) {
               todo.description = e.target.innerHTML;
               Render.saveDataToTheLocalStorage('todoApp', data);
+            }
+            if (e.target.id === `priority-${deleteTitleSpaces}-${project.name}`) {
+              console.log(e.target.value);
+              todo.priority = e.target.value;
+              Render.saveDataToTheLocalStorage('todoApp', data);
+              location.reload();
             }
           });
 
@@ -82,14 +107,5 @@ export default class Render {
     }
   }
 
-  renderProjects() {
-    const projects = Render.getDatafromTheLocalStorage('todoApp');
-    const projectContainer = document.getElementById('projects');
-    projectContainer.innerHTML = '';
-    if (projects) {
-      for (const project of projects) {
-        Render.renderProjectCard(project, projectContainer)
-      }
-    }
-  }
+  
 }
