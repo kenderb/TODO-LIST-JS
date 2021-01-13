@@ -168,6 +168,7 @@ export default class Form {
           const reloadDom = new Render();
           reloadDom.renderProjects();
           reloadDom.renderAllTodos();
+          this.form.reset();
           Form.closeForm(createTodoContainer);
         }
       }

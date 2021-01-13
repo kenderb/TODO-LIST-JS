@@ -64,8 +64,8 @@ export default class Render {
     const todoCard = `
       <div class="todo d-flex" id="container-${todo.id}">
         <div class="checkbox-container"id="check-${todo.id}">
-          <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">
-          <label for="checkbox" class="checkbox-circle" id="${todo.id}"></label>
+          <input type="checkbox" name="checkbox-${todo.id}" id="checkbox-${todo.id}" class="checkbox">
+          <label for="checkbox-${todo.id}" class="checkbox-circle" id="label-${todo.id}"></label>
         </div>
         <p class="todo-title" id="title-${todo.id}">
           ${todo.title}
@@ -110,7 +110,7 @@ export default class Render {
     Render.eventForClick(todo, todoDiv, project, data);
     Render.eventForFocusOut(todoDiv, todo, data);
     todoContainer.append(todoDiv);
-    const getCircle = document.getElementById(`${todo.id}`);
+    const getCircle = document.getElementById(`label-${todo.id}`);
     const editableDescription = document.getElementById(`description-${todo.id}`);
     editableDescription.contentEditable = true;
     getCircle.style.border = `${project.color} 1px solid`;
