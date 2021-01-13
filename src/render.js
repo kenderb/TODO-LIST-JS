@@ -5,17 +5,7 @@ export default class Render {
     this.todoContainer = document.getElementById('all-todos-container');
   }
 
-  static saveDataToTheLocalStorage(key, value) {
-    window.localStorage.setItem(key, JSON.stringify(value));
-  }
-
-  static getDatafromTheLocalStorage(key) {
-    const starage = JSON.parse(window.localStorage.getItem(key));
-    if (starage === null || starage === 'null') {
-      return [];
-    }
-    return starage;
-  }
+  
 
   static eventForClick(todo, todoDiv, project, data) {
     todoDiv.addEventListener('click', (e) => {
