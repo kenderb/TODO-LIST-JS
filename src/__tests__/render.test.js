@@ -1,4 +1,4 @@
-import Render from './render'
+import Render from '../render'
 
 describe('Render class', () => {
   let render;
@@ -21,7 +21,7 @@ describe('Render class', () => {
   });
   
   it('Should render all to-dos', () => {
-    expect(render.renderAllTodos()).toEqual([{title: 'todo here'}])
+    expect(render.renderAllTodos()).toEqual([{title: 'todo here'}]);
   });
 
 });
