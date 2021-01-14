@@ -10,5 +10,6 @@ export default class Navbar {
     this.element.addEventListener('click', () => {
       this.openElement.classList.toggle('d-none');
     });
+    return this.element.id;
   }
 }
