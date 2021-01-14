@@ -1,12 +1,12 @@
 import Form from '../components/todo-form/form.component';
+import createHtmlForm from '../__mock__/formContainer';
 
 describe('Form class', () => {
   let form;
   beforeEach(() => {
-    document.body.innerHTML = '<div class="d-flex projects" id="projects">'
-    + '</div>'
-    + '<div class="todos" id="all-todos-container">'
-    + '</div>';
+    createHtmlForm();
+    const createTodoFormBtn = document.getElementById('add-todo-btn');
+    const formContainer = document.getElementById('todo-form-container');
     form = new Form(formContainer, createTodoFormBtn);
   });
 
