@@ -155,11 +155,13 @@ export default class Form {
           projectList.append(opinionTag);
         }
       });
+      return storageProjects;
     }
+    return false;
   }
 
   getFromData() {
-    Form.addOptionsFromStorage();
+    const data = Form.addOptionsFromStorage();
     Form.getProjectFormInfo();
     this.form.addEventListener('click', (e) => {
       if (e.target.id === 'create-button') {
@@ -183,5 +185,6 @@ export default class Form {
         Form.closeForm(createTodoContainer);
       }
     });
+    return data;
   }
 }
