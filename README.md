@@ -8,6 +8,7 @@
 - VS Code
 - JavaScript
 - SASS.
+- Jest.
 
 ## Demo Screenshots
 
@@ -35,6 +36,12 @@ To get a local copy up and running follow these simple example steps.
 2. Install dependencies using: `npm install`.
 2. Run a server using: `npx webpack serve`.
 3. Open `http://localhost:3000/` in your browser or open the index.html on your browser.
+
+## :straight_ruler: Running test
+
+1. On the terminal navigate to the project directory using `cd TODO-LIST-JS/`.
+2. Run the test with: `npm test`.
+
 
 ## Authors
 
