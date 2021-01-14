@@ -13,5 +13,4 @@ describe('Form class', () => {
   it('Should get the form info', () => {
     expect((form.getFromData())(form.form)).toBe(true);
   });
-
 });
