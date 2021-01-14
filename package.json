@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "jest",
+    "watch": "jest --watch ./src/*.js",
     "build": "webpack"
   },
   "repository": {
