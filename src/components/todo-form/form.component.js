@@ -161,7 +161,7 @@ export default class Form {
   }
 
   getFromData() {
-    const data = Form.addOptionsFromStorage();
+    Form.addOptionsFromStorage();
     Form.getProjectFormInfo();
     this.form.addEventListener('click', (e) => {
       if (e.target.id === 'create-button') {
@@ -185,6 +185,6 @@ export default class Form {
         Form.closeForm(createTodoContainer);
       }
     });
-    return data;
+    return Form.saveData;
   }
 }

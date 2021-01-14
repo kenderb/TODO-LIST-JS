@@ -11,10 +11,7 @@ describe('Form class', () => {
   });
 
   it('Should get the form info', () => {
-    expect(form.getFromData()).toBe('project name');
+    expect((form.getFromData())(form.form)).toBe(true);
   });
 
-  // it('Should render all to-dos', () => {
-  //   expect(render.renderAllTodos()).toEqual([{ title: 'todo here' }]);
-  // });
 });

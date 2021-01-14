@@ -7,11 +7,11 @@ const createHtmlForm = () => {
       <form action="/project" class="project-form" id="project-form">
         <h4>Add a new project</h4>
         <div class="project-input-container">
-          <input type="text" placeholder="project title" name="projectTitle" required>
+          <input type="text" placeholder="project title" name="projectTitle" >
         </div>
         <div class="project-input-container">
           <label for="color">Pick a color</label>
-          <input type="color" name="color">
+          <input type="color" name="color" value="red">
         </div>
         <div>
           <button type="button" id="btn-create-project">Add Project</button>
@@ -26,24 +26,24 @@ const createHtmlForm = () => {
       <div class="form-segment project-segment">
         <label for="project">Select or create a project</label>
         <select id="project-list" name="project">
-          <option value="default" id="default">default</option>
+          <option value="default" id="default" selected>default</option>
         </select>
         <button type="button" id="create-project">New project</button>
       </div>
       
       <div class="form-segment">
         <label for="title">Title</label>
-        <input type="text" name="title" required>
+        <input type="text" name="title" value="todo title">
       </div>
       
       <div class="form-segment">
         <label for="date">Date</label>
-        <input type="date" name="date" required>
+        <input type="date" name="date" value="2018-12-31">
       </div>
       
       <div class="form-segment">
         <label for="description">Description</label>
-        <textarea name="description" id="" cols="23" rows="3"></textarea>
+        <textarea name="description" id="" cols="23" rows="3">text here</textarea>
       </div>
       
       <div class="form-segment">
