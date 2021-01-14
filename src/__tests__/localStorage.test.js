@@ -1,4 +1,4 @@
-import LocalStorage from '../localStorage'
+import LocalStorage from '../localStorage';
 
 describe('LocalStorage class', () => {
   let storage;
@@ -7,11 +7,10 @@ describe('LocalStorage class', () => {
   });
 
   it('Save data to the local storage', () => {
-    expect(storage.saveDataToTheLocalStorage('data')).toBe('data')
-  });
-  
-  it('Get data to the local storage', () => {
-    expect(storage.getDatafromTheLocalStorage()).toBe('data')
+    expect(storage.saveDataToTheLocalStorage('data')).toBe('data');
   });
 
+  it('Get data to the local storage', () => {
+    expect(storage.getDatafromTheLocalStorage()).toBe('data');
+  });
 });
