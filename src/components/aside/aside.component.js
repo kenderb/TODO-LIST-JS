@@ -18,5 +18,6 @@ export default class Aside {
         this.asideContainer.classList.add('d-none');
       }
     });
+    return this.asideContainer.id;
   }
 }

@@ -10,5 +10,6 @@ export default class Button {
     this.openBtn.addEventListener('click', () => {
       this.formContainer.classList.toggle('d-none');
     });
+    return this.openBtn.id;
   }
 }
