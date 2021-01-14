@@ -7,6 +7,7 @@ export default class LocalStorage {
 
   saveDataToTheLocalStorage(data) {
     window.localStorage.setItem(this.key, JSON.stringify(data));
+    return JSON.parse(window.localStorage.getItem(this.key));
   }
 
   getDatafromTheLocalStorage() {
