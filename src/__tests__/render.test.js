@@ -15,6 +15,10 @@ describe('Render class', () => {
     render = new Render();
   });
 
+  it('Should return and object', () => {
+    expect(typeof render).toBe('object');
+  });
+
   it('Should render all projects', () => {
     expect(render.renderProjects()).toBe('project name');
   });

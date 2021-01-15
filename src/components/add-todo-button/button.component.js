@@ -9,6 +9,7 @@ export default class Button {
   activateButton() {
     this.openBtn.addEventListener('click', () => {
       this.formContainer.classList.toggle('d-none');
+      return true;
     });
     return this.openBtn.id;
   }
