@@ -16,8 +16,7 @@ describe('Aside class', () => {
   });
 
   it('Should put an image', () => {
-    const imageTag = document.getElementById('photo');
-    expect(aside.putLogo(imageTag)).toBe('aside');
+    expect(typeof aside.putLogo()).toBe('object');
   });
 
   it('Should close the aside container', () => {

@@ -3,14 +3,13 @@ import logo from '../../images/logo_02.svg';
 
 export default class Aside {
   constructor(name, aisdeContainer) {
+    this.logo = logo;
     this.name = name;
-    this.photo = logo;
     this.asideContainer = aisdeContainer;
   }
 
-  putLogo(image) {
-    image.src = this.photo;
-    return image.src;
+  putLogo() {
+    return this.logo;
   }
 
   activateClose() {

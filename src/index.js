@@ -22,7 +22,7 @@ const form = new Form(formContainer, createTodoFormBtn);
 form.getFromData();
 
 const aside = new Aside('kender', aisdeContainer);
-aside.putLogo(photoImage);
+photoImage.src = aside.putLogo();
 aside.activateClose();
 
 const navBar = new Nav(menuBtn, aisdeContainer);
