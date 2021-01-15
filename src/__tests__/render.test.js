@@ -36,4 +36,12 @@ describe('Render class', () => {
     expect(mockCallBack.mock.calls.length).toEqual(1);
   });
 
+  it('Should click the title', () => {
+    render.renderAllTodos();
+    const mockCallBack = jest.fn();
+    const btnTitle = document.getElementById('title-1');
+    btnTitle.onclick = mockCallBack;
+    btnTitle.click();
+    expect(mockCallBack.mock.calls.length).toEqual(1);
+  });
 });
