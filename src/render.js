@@ -180,7 +180,9 @@ export default class Render {
       data.forEach(project => {
         Render.renderProjectCard(project, this.projectContainer, data);
       });
+      return data;
     }
+    return data;
   }
 
   renderAllTodos() {
@@ -193,6 +195,8 @@ export default class Render {
           Render.construcCard(this.todoContainer, project, todo, data);
         });
       });
+      return data;
     }
+    return data;
   }
 }

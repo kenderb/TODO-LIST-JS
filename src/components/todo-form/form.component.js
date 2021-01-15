@@ -155,7 +155,9 @@ export default class Form {
           projectList.append(opinionTag);
         }
       });
+      return storageProjects;
     }
+    return false;
   }
 
   getFromData() {
@@ -183,5 +185,6 @@ export default class Form {
         Form.closeForm(createTodoContainer);
       }
     });
+    return Form.saveData;
   }
 }

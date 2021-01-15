@@ -3,13 +3,13 @@ import logo from '../../images/logo_02.svg';
 
 export default class Aside {
   constructor(name, aisdeContainer) {
+    this.logo = logo;
     this.name = name;
-    this.photo = logo;
     this.asideContainer = aisdeContainer;
   }
 
-  putLogo(image) {
-    image.src = this.photo;
+  putLogo() {
+    return this.logo;
   }
 
   activateClose() {
@@ -17,6 +17,8 @@ export default class Aside {
       if (e.target.id === 'aside-container' || e.target.id === 'arrow') {
         this.asideContainer.classList.add('d-none');
       }
+      return true;
     });
+    return this.asideContainer.id;
   }
 }
