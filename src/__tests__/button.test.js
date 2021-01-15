@@ -13,6 +13,7 @@ describe('Button class', () => {
   it('Should activate button', () => {
     expect(button.activateButton()).toBe('add-todo-btn');
   });
+
   it('Should click the button', () => {
     button.activateButton();
     const mockCallBack = jest.fn();

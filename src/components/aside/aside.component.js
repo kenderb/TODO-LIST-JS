@@ -10,6 +10,7 @@ export default class Aside {
 
   putLogo(image) {
     image.src = this.photo;
+    return image.src;
   }
 
   activateClose() {
@@ -17,6 +18,7 @@ export default class Aside {
       if (e.target.id === 'aside-container' || e.target.id === 'arrow') {
         this.asideContainer.classList.add('d-none');
       }
+      return true;
     });
     return this.asideContainer.id;
   }
