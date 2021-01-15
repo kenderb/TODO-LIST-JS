@@ -7,7 +7,7 @@ const createInvalidHtmlForm = () => {
       <form action="/project" class="project-form" id="project-form">
         <h4>Add a new project</h4>
         <div class="project-input-container">
-          <input type="text" placeholder="project title" name="projectTitle" >
+          <input type="text" placeholder="project title" name="projectTitle" value="default">
         </div>
         <div class="project-input-container">
           <label for="color">Pick a color</label>
