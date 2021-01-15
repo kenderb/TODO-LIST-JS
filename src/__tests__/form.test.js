@@ -70,7 +70,7 @@ describe('Form class', () => {
     cancelProjectBtn.click();
     expect(mockCallBack.mock.calls.length).toEqual(1);
   });
-  
+
   it('Should click form buttons', () => {
     createInvalidHtmlForm();
     const createTodoFormBtn = document.getElementById('add-todo-btn');
